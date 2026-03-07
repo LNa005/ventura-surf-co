@@ -40,7 +40,7 @@
 
 1. Clona el repositorio:
    ```bash
-   git clone [https://github.com/tu-usuario/ventura-surf-co.git](https://github.com/tu-usuario/ventura-surf-co.git)
+   git clone [https://github.com/LNa005/ventura-surf-co.git](https://github.com/LNa005/ventura-surf-co.git)
    
 2. Abre el archivo index.html en tu navegador.
 
