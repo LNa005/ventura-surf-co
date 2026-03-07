@@ -211,7 +211,7 @@
       inset: 0;
       background-image:
         linear-gradient(to right, rgba(10,10,8,0.88) 25%, rgba(10,10,8,0.35) 100%),
-        url('img/hero.jpg');
+        url('img/hero.webp');
       background-size: cover;
       background-position: center;
       z-index: 0;
@@ -948,7 +948,7 @@
     <a href="#reserva" class="mobile-link mobile-cta">Reservar</a>
     <div class="mobile-social">
       <a href="https://github.com/LNa005" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </nav>
 
@@ -1019,7 +1019,7 @@
         <div>
           <p class="curso-num">01 / Más popular</p>
           <div class="curso-img">
-            <img src="img/kitesurf.jpg" alt="Kitesurf en las playas de Corralejo, Fuerteventura"/>
+            <img src="img/kitesurf.webp" alt="Kitesurf en las playas de Corralejo, Fuerteventura"/>
           </div>
           <h3>Kitesurf desde cero</h3>
           <p>El programa más completo para aprender kitesurf de forma segura. En 5 días estarás navegando de forma independiente con el viento de Corralejo.</p>
@@ -1036,7 +1036,7 @@
         </div>
       </div>
       <div class="curso-card">
-        <div class="curso-img"><img src="img/surf.jpg" alt="Surfista en la playa de Corralejo"/></div>
+        <div class="curso-img"><img src="img/surf.webp" alt="Surfista en la playa de Corralejo"/></div>
         <p class="curso-num">02</p>
         <h3>Surf intensivo</h3>
         <p>3 días, 2h por sesión. Playa de Corralejo, olas perfectas para aprender.</p>
@@ -1044,7 +1044,7 @@
         <div class="curso-arrow">→</div>
       </div>
       <div class="curso-card">
-        <div class="curso-img"><img src="img/windsurf.jpg" alt="Windsurf en las costas de Fuerteventura"/></div>
+        <div class="curso-img"><img src="img/windsurf.webp" alt="Windsurf en las costas de Fuerteventura"/></div>
         <p class="curso-num">03</p>
         <h3>Windsurf</h3>
         <p>La disciplina que nació en Fuerteventura. Aprende con los mejores vientos de Europa.</p>
@@ -1052,7 +1052,7 @@
         <div class="curso-arrow">→</div>
       </div>
       <div class="curso-card">
-        <div class="curso-img"><img src="img/sup.jpg" alt="Paddle surf al amanecer en Fuerteventura"/></div>
+        <div class="curso-img"><img src="img/sup.webp" alt="Paddle surf al amanecer en Fuerteventura"/></div>
         <p class="curso-num">04</p>
         <h3>SUP & Yoga</h3>
         <p>Paddle surf al amanecer + yoga en la playa. Para los que buscan calma y fuerza.</p>
@@ -1060,7 +1060,7 @@
         <div class="curso-arrow">→</div>
       </div>
       <div class="curso-card">
-        <div class="curso-img"><img src="img/privada.jpg" alt="Instructor de surf con alumno en la playa" style="object-position: center top;"/></div>
+        <div class="curso-img"><img src="img/privada.webp" alt="Instructor de surf con alumno en la playa" style="object-position: center top;"/></div>
         <p class="curso-num">05</p>
         <h3>Clase privada</h3>
         <p>Tu ritmo, tu nivel, tu instructor. Para avanzar rápido o refinar la técnica.</p>
@@ -1142,6 +1142,8 @@
       <p>Plazas limitadas. Los fines de semana se llenan rápido. Confirma tu sitio ahora.</p>
     </div>
     <form action="https://formspree.io/f/xjgakbab" method="POST" class="reserva-form">
+      <!-- Honeypot anti-spam: campo oculto, los bots lo rellenan, los humanos no -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off"/>
       <label for="nombre" class="sr-only">Tu nombre</label>
       <input type="text" name="nombre" id="nombre" placeholder="Tu nombre" required/>
       <label for="email" class="sr-only">Email</label>
@@ -1166,7 +1168,7 @@
     <div class="footer-logo">Ventura Surf Co.</div>
     <div class="footer-links">
       <a href="https://github.com/LNa005" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
       <a href="privacy.html">Privacidad</a>
     </div>
     <p class="footer-copy">© 2026 · Corralejo, Fuerteventura. Hecho en Canarias con ❤️</p>

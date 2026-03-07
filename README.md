@@ -73,12 +73,12 @@ ventura-surf-co/
 ├── favicon.svg         # Favicon con identidad de marca
 ├── .gitignore
 ├── img/
-│   ├── hero.jpg        # Fondo del hero (vista aérea kitesurf)
-│   ├── kitesurf.jpg    # Card kitesurf destacada
-│   ├── surf.jpg        # Card surf intensivo
-│   ├── windsurf.jpg    # Card windsurf
-│   ├── sup.jpg         # Card SUP & yoga
-│   └── privada.jpg     # Card clase privada
+│   ├── hero.webp       # Fondo del hero (vista aérea kitesurf)
+│   ├── kitesurf.webp   # Card kitesurf destacada
+│   ├── surf.webp       # Card surf intensivo
+│   ├── windsurf.webp   # Card windsurf
+│   ├── sup.webp        # Card SUP & yoga
+│   └── privada.webp    # Card clase privada
 └── assets/
     └── preview.png     # Screenshot para el README
 ```
@@ -106,11 +106,9 @@ ventura-surf-co/
 
 - [x] 🏷️ **Favicon añadido** — `favicon.svg` con la V de marca y ola decorativa
 - [x] 📱 **Menú hamburguesa móvil** — Overlay a pantalla completa con animación y cierre automático
-- [ ] 📊 **Google Analytics o similar** — Para saber cuánta gente visita, desde dónde y qué secciones visitan más
-- [ ] 🖼️ **Optimizar imágenes** — Convertir las imágenes a formato `.webp` para mejorar la velocidad de carga
-- [ ] 🔒 **Honeypot en el formulario** — Campo oculto anti-spam para evitar bots en las reservas
-- [ ] 🧪 **Testear el formulario de Formspree** — Hacer una reserva de prueba real y verificar que llega el email correctamente
-- [ ] 📱 **Revisar en iOS Safari** — Algunos efectos CSS se comportan diferente en iPhone, vale la pena comprobarlo
+- [x] 🖼️ **Imágenes optimizadas a `.webp`** — Todas las imágenes convertidas para mejor rendimiento
+- [x] 🔒 **Honeypot anti-spam** — Campo oculto `_gotcha` en el formulario para bloquear bots
+- [x] 🧪 **Formulario de Formspree testeado** — Reserva de prueba enviada y recibida correctamente
 
 ### 💅 Nice to have (futuro)
 
