@@ -9,6 +9,11 @@
 <meta property="og:title" content="Ventura Surf Co. – Escuela de Surf & Kite">
 <meta property="og:description" content="Aprende surf, kite y windsurf en Corralejo. 300 días de viento al año.">
 <meta property="og:image" content="https://tu-dominio.com/img/social-preview.jpg">
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -115,6 +120,81 @@
       border-radius: 2px;
     }
 
+    /* ── HAMBURGUESA ── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: none;
+      padding: 4px;
+      z-index: 200;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+      transform-origin: center;
+    }
+
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MENÚ MÓVIL ── */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--black);
+      z-index: 150;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-mobile a:hover { color: var(--rust); }
+
+    .nav-mobile .mobile-cta {
+      font-size: 1.8rem;
+      border: 2px solid var(--rust);
+      color: var(--rust);
+      padding: 0.6rem 2rem;
+      border-radius: 2px;
+    }
+
+    .nav-mobile .mobile-social {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .nav-mobile .mobile-social a {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
@@ -126,20 +206,9 @@
       overflow: hidden;
     }
 
-    /* ── FONDO DEL HERO ──────────────────────────────────────────────
-       Actualmente el fondo es un gradiente CSS (no hay foto).
-       Para añadir una imagen de fondo real, descomenta la línea
-       background-image de abajo y ajusta la URL:
-         · Unsplash: https://unsplash.com → busca "corralejo beach aerial"
-         · Foto propia: url('img/hero-fondo.jpg')
-       El gradiente encima asegura que el texto siga siendo legible.
-    ─────────────────────────────────────────────────────────────────── */
     .hero-bg {
       position: absolute;
       inset: 0;
-      /* background-image: url('https://images.unsplash.com/photo-TUURL?w=1600&auto=format&fit=crop'); */
-      /* background-size: cover; */
-      /* background-position: center; */
       background:
         radial-gradient(ellipse 80% 50% at 60% 40%, rgba(201,79,42,0.35) 0%, transparent 60%),
         radial-gradient(ellipse 60% 80% at 20% 80%, rgba(30,61,110,0.6) 0%, transparent 60%),
@@ -147,7 +216,6 @@
       z-index: 0;
     }
 
-    /* Textura de grano */
     .hero-bg::after {
       content: '';
       position: absolute;
@@ -157,7 +225,6 @@
       pointer-events: none;
     }
 
-    /* Líneas decorativas */
     .hero-lines {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -171,22 +238,10 @@
       background: rgba(247,244,238,0.04);
     }
 
-    .hero-lines span:nth-child(1) {
-      width: 1px; height: 100%;
-      left: 33%;
-    }
+    .hero-lines span:nth-child(1) { width: 1px; height: 100%; left: 33%; }
+    .hero-lines span:nth-child(2) { width: 1px; height: 100%; left: 66%; }
+    .hero-lines span:nth-child(3) { width: 100%; height: 1px; top: 55%; }
 
-    .hero-lines span:nth-child(2) {
-      width: 1px; height: 100%;
-      left: 66%;
-    }
-
-    .hero-lines span:nth-child(3) {
-      width: 100%; height: 1px;
-      top: 55%;
-    }
-
-    /* Número grande de fondo */
     .hero-number {
       position: absolute;
       right: 3%;
@@ -201,10 +256,7 @@
       letter-spacing: -0.02em;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
+    .hero-content { position: relative; z-index: 2; }
 
     .hero-location {
       display: flex;
@@ -235,11 +287,7 @@
       margin-bottom: 0.1em;
     }
 
-    .hero h1 .outline {
-      -webkit-text-stroke: 2px var(--white);
-      color: transparent;
-    }
-
+    .hero h1 .outline { -webkit-text-stroke: 2px var(--white); color: transparent; }
     .hero h1 .accent { color: var(--rust); }
 
     .hero-sub {
@@ -260,11 +308,7 @@
       line-height: 1.5;
     }
 
-    .hero-ctas {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
 
     .btn-fill {
       background: var(--rust);
@@ -298,7 +342,6 @@
 
     .btn-ghost:hover { border-color: var(--white); transform: translateY(-3px); }
 
-    /* scroll hint */
     .scroll-hint {
       position: absolute;
       bottom: 2rem;
@@ -335,10 +378,7 @@
       white-space: nowrap;
     }
 
-    .ticker-inner {
-      display: inline-flex;
-      animation: ticker 20s linear infinite;
-    }
+    .ticker-inner { display: inline-flex; animation: ticker 20s linear infinite; }
 
     .ticker-item {
       font-family: 'Bebas Neue', sans-serif;
@@ -348,9 +388,7 @@
       color: var(--white);
     }
 
-    .ticker-dot {
-      color: rgba(247,244,238,0.5);
-    }
+    .ticker-dot { color: rgba(247,244,238,0.5); }
 
     @keyframes ticker {
       from { transform: translateX(0); }
@@ -358,10 +396,7 @@
     }
 
     /* ── CURSOS ── */
-    .cursos {
-      padding: 7rem 5%;
-      position: relative;
-    }
+    .cursos { padding: 7rem 5%; position: relative; }
 
     .cursos-header {
       display: flex;
@@ -417,41 +452,30 @@
       min-height: 480px;
     }
 
-    /* ── IMAGEN EN CARDS DE CURSO ────────────────────────────────────
-       Solo la card "featured" (la grande) lleva imagen de fondo.
-       Las cards pequeñas mantienen el fondo oscuro con icono.
-       Si quieres añadir imagen a las pequeñas también, usa el mismo
-       patrón: añade un <div class="curso-img"> al HTML de esa card.
-    ────────────────────────────────────────────────────────────── */
+    .curso-card.featured:hover { background: #243f6e; }
+
     .curso-img {
-      width: 100%;
-      height: 220px;
-      overflow: hidden;       /* recorta la imagen */
-      border-radius: 2px;
-      margin-bottom: 1.5rem;
-      position: relative;
+      height: 180px;
+      overflow: hidden;
+      margin: -2.5rem -2.5rem 1.5rem;
     }
+
+    .curso-card.featured .curso-img { height: 240px; }
 
     .curso-img img {
       width: 100%;
       height: 100%;
-      object-fit: cover;        /* rellena sin deformar */
+      object-fit: cover;
       object-position: center;
       display: block;
       transition: transform 0.5s ease;
-      filter: brightness(0.85); /* oscurece un poco para que contraste con texto */
+      filter: brightness(0.85);
     }
 
     .curso-card:hover .curso-img img {
-      transform: scale(1.05); /* zoom suave en hover */
+      transform: scale(1.07);
+      filter: brightness(0.95);
     }
-
-    /* Imagen de fondo en la card destacada (ocupa la mitad superior) */
-    .curso-card.featured .curso-img {
-      height: 260px;
-    }
-
-    .curso-card.featured:hover { background: #243f6e; }
 
     .curso-num {
       font-family: 'Bebas Neue', sans-serif;
@@ -459,13 +483,6 @@
       letter-spacing: 0.15em;
       color: var(--muted);
       margin-bottom: 2rem;
-    }
-
-    .curso-icon {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-      display: block;
-      filter: grayscale(20%);
     }
 
     .curso-card h3 {
@@ -477,9 +494,7 @@
       line-height: 1;
     }
 
-    .curso-card.featured h3 {
-      font-size: 3rem;
-    }
+    .curso-card.featured h3 { font-size: 3rem; }
 
     .curso-card p {
       font-family: 'Crimson Pro', serif;
@@ -489,12 +504,7 @@
       margin-bottom: 1.5rem;
     }
 
-    .curso-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
+    .curso-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
 
     .tag {
       font-size: 0.7rem;
@@ -514,12 +524,7 @@
       line-height: 1;
     }
 
-    .curso-price sup {
-      font-size: 1.2rem;
-      vertical-align: top;
-      margin-top: 0.5rem;
-      color: var(--sand);
-    }
+    .curso-price sup { font-size: 1.2rem; vertical-align: top; margin-top: 0.5rem; color: var(--sand); }
 
     .curso-price span {
       font-family: 'Syne', sans-serif;
@@ -543,43 +548,9 @@
       transition: border-color 0.2s, background 0.2s;
     }
 
-    .curso-card:hover .curso-arrow {
-      border-color: var(--rust);
-      background: var(--rust);
-    }
+    .curso-card:hover .curso-arrow { border-color: var(--rust); background: var(--rust); }
 
-    /* ── IMÁGENES DE LAS CARDS DE CURSOS ──────────────────────────────
-       .curso-img es el contenedor que recorta la foto.
-       Si quieres cambiar la altura, toca solo "height" aquí abajo.
-       La card destacada (featured) tiene más altura para dar más peso visual.
-    ─────────────────────────────────────────────────────────────────── */
-    .curso-img {
-      height: 180px;
-      overflow: hidden;         /* recorta la imagen sin deformarla */
-      margin: -2.5rem -2.5rem 1.5rem; /* sangra hasta los bordes del padding de la card */
-    }
-
-    /* La card grande tiene más espacio para la foto */
-    .curso-card.featured .curso-img {
-      height: 240px;
-    }
-
-    /* La imagen ocupa todo el contenedor sin deformarse */
-    .curso-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;        /* rellena sin estirar — clave para que quede bien */
-      object-position: center;  /* punto de recorte — prueba "top" si la acción está arriba */
-      display: block;
-      transition: transform 0.5s ease;
-      filter: brightness(0.85); /* oscurece un poco para que el texto encima sea legible */
-    }
-
-    /* Zoom suave al hacer hover */
-    .curso-card:hover .curso-img img {
-      transform: scale(1.07);
-      filter: brightness(0.95);
-    }
+    /* ── VIENTO ── */
     .viento {
       padding: 5rem 5%;
       display: grid;
@@ -599,11 +570,7 @@
       margin-bottom: 1.5rem;
     }
 
-    .viento-text h2 em {
-      font-family: 'Crimson Pro', serif;
-      font-style: italic;
-      color: var(--sky);
-    }
+    .viento-text h2 em { font-family: 'Crimson Pro', serif; font-style: italic; color: var(--sky); }
 
     .viento-text p {
       font-family: 'Crimson Pro', serif;
@@ -613,16 +580,9 @@
       margin-bottom: 2rem;
     }
 
-    .stats-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
+    .stats-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 
-    .stat-item {
-      border-left: 2px solid var(--rust);
-      padding-left: 1rem;
-    }
+    .stat-item { border-left: 2px solid var(--rust); padding-left: 1rem; }
 
     .stat-num {
       font-family: 'Bebas Neue', sans-serif;
@@ -642,10 +602,7 @@
       display: block;
     }
 
-    /* Panel de viento visual */
-    .viento-visual {
-      position: relative;
-    }
+    .viento-visual { position: relative; }
 
     .wind-panel {
       background: #111108;
@@ -663,17 +620,9 @@
       margin-bottom: 2rem;
     }
 
-    .wind-bars {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    .wind-bars { display: flex; flex-direction: column; gap: 1rem; }
 
-    .wind-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
+    .wind-row { display: flex; align-items: center; gap: 1rem; }
 
     .wind-month {
       font-size: 0.75rem;
@@ -716,9 +665,7 @@
       border-top: 1px solid rgba(247,244,238,0.08);
     }
 
-    .instructores-header {
-      margin-bottom: 4rem;
-    }
+    .instructores-header { margin-bottom: 4rem; }
 
     .instructores-grid {
       display: grid;
@@ -742,7 +689,6 @@
       justify-content: center;
       font-size: 2.2rem;
       margin-bottom: 1.5rem;
-      position: relative;
     }
 
     .av-blue { background: var(--blue); }
@@ -786,7 +732,7 @@
       color: var(--sand);
     }
 
-    /* ── RESERVA / CTA ── */
+    /* ── RESERVA ── */
     .reserva {
       margin: 0 5% 7rem;
       background: var(--rust);
@@ -853,10 +799,8 @@
     }
 
     .reserva-form input::placeholder { color: rgba(247,244,238,0.55); }
-
     .reserva-form input:focus,
     .reserva-form select:focus { background: rgba(247,244,238,0.22); }
-
     .reserva-form select option { background: var(--black); color: var(--white); }
 
     .reserva-submit {
@@ -895,10 +839,7 @@
       letter-spacing: 0.08em;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-    }
+    .footer-links { display: flex; gap: 2rem; }
 
     .footer-links a {
       text-decoration: none;
@@ -912,10 +853,7 @@
 
     .footer-links a:hover { color: var(--rust); }
 
-    .footer-copy {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
+    .footer-copy { font-size: 0.78rem; color: var(--muted); }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
@@ -935,6 +873,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav ul { display: none; }
+      .nav-toggle { display: flex; }
       .hero h1 { font-size: 5rem; }
       .cursos-grid { grid-template-columns: 1fr; }
       .curso-card.featured { grid-row: auto; min-height: auto; }
@@ -943,60 +882,72 @@
       .reserva { grid-template-columns: 1fr; padding: 3rem 2.5rem; }
       .reserva::before { display: none; }
       footer { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
     }
   </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "item": {
-        "@type": "Course",
-        "name": "Kitesurf desde cero",
-        "description": "Programa completo de 5 días para aprender kitesurf de forma segura en Corralejo.",
-        "provider": {
-          "@type": "Organization",
-          "name": "Ventura Surf Co.",
-          "sameAs": "https://tu-dominio.com"
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "395.00",
-          "priceCurrency": "EUR",
-          "category": "Kitesurf"
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Course",
+          "name": "Kitesurf desde cero",
+          "description": "Programa completo de 5 días para aprender kitesurf de forma segura en Corralejo.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Ventura Surf Co.",
+            "sameAs": "https://tu-dominio.com"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "395.00",
+            "priceCurrency": "EUR"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Course",
+          "name": "Surf intensivo",
+          "description": "3 días de surf intensivo en la playa de Corralejo para todos los niveles.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Ventura Surf Co."
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "120.00",
+            "priceCurrency": "EUR"
+          }
         }
       }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Course",
-        "name": "Surf intensivo",
-        "description": "3 días de surf intensivo en la playa de Corralejo para todos los niveles.",
-        "provider": {
-          "@type": "Organization",
-          "name": "Ventura Surf Co."
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "120.00",
-          "priceCurrency": "EUR",
-          "category": "Surf"
-        }
-      }
-    }
-  ]
-}
-</script>
+    ]
+  }
+  </script>
 </head>
 <body>
 
   <!-- CURSOR -->
   <div class="cursor" id="cursor"></div>
+
+  <!-- NAV MÓVIL (overlay) -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Menú móvil">
+    <a href="#cursos" class="mobile-link">Cursos</a>
+    <a href="#viento" class="mobile-link">El viento</a>
+    <a href="#equipo" class="mobile-link">Equipo</a>
+    <a href="#reserva" class="mobile-link mobile-cta">Reservar</a>
+    <div class="mobile-social">
+      <a href="https://github.com/LNa005" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </nav>
 
   <!-- NAV -->
   <nav>
@@ -1007,33 +958,19 @@
       <li><a href="#equipo">Equipo</a></li>
       <li><a href="#reserva" class="nav-cta">Reservar</a></li>
     </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <!--
-      FONDO DEL HERO – Imagen de fondo principal
-      Actualmente es un gradiente CSS puro.
-      Para poner una foto real, añade dentro de .hero-bg en el CSS:
-        background-image: url('TU-FOTO.jpg');
-        background-size: cover;
-        background-position: center;
-      O sustituye el div.hero-bg por un <img> con position:absolute, inset:0, z-index:0
-      Sugerencia Unsplash: "fuerteventura beach aerial" o "corralejo coast sunset"
-    -->
     <div class="hero-bg"></div>
-    <div class="hero-lines">
-      <span></span><span></span><span></span>
-    </div>
+    <div class="hero-lines"><span></span><span></span><span></span></div>
     <div class="hero-number">26</div>
-
     <div class="hero-content">
       <p class="hero-location">📍 Corralejo · Fuerteventura</p>
-      <h1>
-        RIDE<br>
-        THE<br>
-        <span class="accent">WIND</span>
-      </h1>
+      <h1>RIDE<br>THE<br><span class="accent">WIND</span></h1>
       <div class="hero-sub">
         <p class="hero-desc">Escuela de surf y kitesurf en la isla más ventosa de Europa. Aprende, mejora, vuela.</p>
         <div class="hero-ctas">
@@ -1042,17 +979,12 @@
         </div>
       </div>
     </div>
-
-    <div class="scroll-hint">
-      <div class="scroll-line"></div>
-      scroll
-    </div>
+    <div class="scroll-hint"><div class="scroll-line"></div>scroll</div>
   </section>
 
   <!-- TICKER -->
   <div class="ticker">
     <div class="ticker-inner">
-      <!-- duplicado para loop continuo -->
       <span class="ticker-item">Surf <span class="ticker-dot">◆</span></span>
       <span class="ticker-item">Kitesurf <span class="ticker-dot">◆</span></span>
       <span class="ticker-item">Windsurf <span class="ticker-dot">◆</span></span>
@@ -1079,29 +1011,13 @@
       </div>
       <a href="#reserva" class="btn-fill">Ver todos →</a>
     </div>
-
     <div class="cursos-grid">
-
-      <!-- DESTACADO -->
       <div class="curso-card featured">
         <div>
           <p class="curso-num">01 / Más popular</p>
-
-          <!--
-            IMAGEN CARD DESTACADA – Kitesurf
-            Esta es la card más grande, la imagen tiene más protagonismo.
-            Para cambiarla:
-              · Unsplash gratis: https://unsplash.com → busca "kitesurfing fuerteventura"
-              · Foto propia: cambia el src por "img/kitesurf.jpg" (o la ruta que uses)
-            El atributo alt es importante para SEO — descríbela brevemente.
-          -->
           <div class="curso-img">
-            <img
-              src="https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=800&auto=format&fit=crop"
-              alt="Kitesurf en las playas de Corralejo, Fuerteventura"
-            />
+            <img src="https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=800&auto=format&fit=crop" alt="Kitesurf en las playas de Corralejo, Fuerteventura"/>
           </div>
-
           <h3>Kitesurf desde cero</h3>
           <p>El programa más completo para aprender kitesurf de forma segura. En 5 días estarás navegando de forma independiente con el viento de Corralejo.</p>
           <div class="curso-tags">
@@ -1112,106 +1028,42 @@
           </div>
         </div>
         <div>
-          <div class="curso-price">
-            <sup>€</sup>395
-            <span>por persona · mín. 2 pax</span>
-          </div>
+          <div class="curso-price"><sup>€</sup>395<span>por persona · mín. 2 pax</span></div>
           <div class="curso-arrow">→</div>
         </div>
       </div>
-
-      <!-- SURF -->
       <div class="curso-card">
         <p class="curso-num">02</p>
-        <!--
-          IMAGEN CARD SURF
-          Sugerencia Unsplash: busca "surfing canary islands" o "surf wave beginner"
-          Para foto local: src="img/surf.jpg"
-        -->
-        <div class="curso-img">
-          <img
-            src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=800&auto=format&fit=crop"
-            alt="Surfista en la playa de Corralejo"
-          />
-        </div>
+        <div class="curso-img"><img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=800&auto=format&fit=crop" alt="Surfista en la playa de Corralejo"/></div>
         <h3>Surf intensivo</h3>
         <p>3 días, 2h por sesión. Playa de Corralejo, olas perfectas para aprender.</p>
-        <div class="curso-price" style="font-size:2rem">
-          <sup style="font-size:0.9rem">€</sup>120
-          <span>3 días · equipo incluido</span>
-        </div>
+        <div class="curso-price" style="font-size:2rem"><sup style="font-size:0.9rem">€</sup>120<span>3 días · equipo incluido</span></div>
         <div class="curso-arrow">→</div>
       </div>
-
-      <!-- WINDSURF -->
       <div class="curso-card">
         <p class="curso-num">03</p>
-        <!--
-          IMAGEN CARD WINDSURF
-          Sugerencia Unsplash: busca "windsurfing ocean" o "windsurf fuerteventura"
-          Para foto local: src="img/windsurf.jpg"
-        -->
-        <div class="curso-img">
-          <img
-            src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&auto=format&fit=crop"
-            alt="Windsurf en las costas de Fuerteventura"
-          />
-        </div>
+        <div class="curso-img"><img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&auto=format&fit=crop" alt="Windsurf en las costas de Fuerteventura"/></div>
         <h3>Windsurf</h3>
         <p>La disciplina que nació en Fuerteventura. Aprende con los mejores vientos de Europa.</p>
-        <div class="curso-price" style="font-size:2rem">
-          <sup style="font-size:0.9rem">€</sup>160
-          <span>4 días · equipo incluido</span>
-        </div>
+        <div class="curso-price" style="font-size:2rem"><sup style="font-size:0.9rem">€</sup>160<span>4 días · equipo incluido</span></div>
         <div class="curso-arrow">→</div>
       </div>
-
-      <!-- SUP -->
       <div class="curso-card">
         <p class="curso-num">04</p>
-        <!--
-          IMAGEN CARD SUP & YOGA
-          Sugerencia Unsplash: busca "paddle surf sunrise" o "sup yoga beach"
-          Para foto local: src="img/sup.jpg"
-        -->
-        <div class="curso-img">
-          <img
-            src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&auto=format&fit=crop"
-            alt="Paddle surf al amanecer en Fuerteventura"
-          />
-        </div>
+        <div class="curso-img"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&auto=format&fit=crop" alt="Paddle surf al amanecer en Fuerteventura"/></div>
         <h3>SUP & Yoga</h3>
         <p>Paddle surf al amanecer + yoga en la playa. Para los que buscan calma y fuerza.</p>
-        <div class="curso-price" style="font-size:2rem">
-          <sup style="font-size:0.9rem">€</sup>55
-          <span>sesión individual</span>
-        </div>
+        <div class="curso-price" style="font-size:2rem"><sup style="font-size:0.9rem">€</sup>55<span>sesión individual</span></div>
         <div class="curso-arrow">→</div>
       </div>
-
-      <!-- PRIVADO -->
       <div class="curso-card">
         <p class="curso-num">05</p>
-        <!--
-          IMAGEN CARD CLASE PRIVADA
-          Sugerencia Unsplash: busca "surf instructor lesson" o "kite lesson beach"
-          Para foto local: src="img/privada.jpg"
-        -->
-        <div class="curso-img">
-          <img
-            src="https://images.unsplash.com/photo-1531722569936-825d3dd91b15?w=800&auto=format&fit=crop"
-            alt="Instructor de surf con alumno en la playa"
-          />
-        </div>
+        <div class="curso-img"><img src="https://images.unsplash.com/photo-1531722569936-825d3dd91b15?w=800&auto=format&fit=crop" alt="Instructor de surf con alumno en la playa"/></div>
         <h3>Clase privada</h3>
         <p>Tu ritmo, tu nivel, tu instructor. Para avanzar rápido o refinar la técnica.</p>
-        <div class="curso-price" style="font-size:2rem">
-          <sup style="font-size:0.9rem">€</sup>80
-          <span>por hora</span>
-        </div>
+        <div class="curso-price" style="font-size:2rem"><sup style="font-size:0.9rem">€</sup>80<span>por hora</span></div>
         <div class="curso-arrow">→</div>
       </div>
-
     </div>
   </section>
 
@@ -1222,89 +1074,28 @@
       <h2>El <em>viento</em><br>que lo cambia<br>todo</h2>
       <p>Fuerteventura es la isla más ventosa de Europa. El alisio sopla de media 300 días al año, lo que la convierte en el destino número uno del mundo para kitesurf y windsurf.</p>
       <div class="stats-list">
-        <div class="stat-item">
-          <span class="stat-num">300</span>
-          <span class="stat-label">Días de viento al año</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">25kt</span>
-          <span class="stat-label">Media en verano</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">22°C</span>
-          <span class="stat-label">Temperatura del agua</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">#1</span>
-          <span class="stat-label">Destino kite en Europa</span>
-        </div>
+        <div class="stat-item"><span class="stat-num">300</span><span class="stat-label">Días de viento al año</span></div>
+        <div class="stat-item"><span class="stat-num">25kt</span><span class="stat-label">Media en verano</span></div>
+        <div class="stat-item"><span class="stat-num">22°C</span><span class="stat-label">Temperatura del agua</span></div>
+        <div class="stat-item"><span class="stat-num">#1</span><span class="stat-label">Destino kite en Europa</span></div>
       </div>
     </div>
-
     <div class="viento-visual">
       <div class="wind-panel">
         <p class="wind-panel-title">Fuerza del viento por mes (nudos)</p>
         <div class="wind-bars">
-          <div class="wind-row">
-            <span class="wind-month">Ene</span>
-            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:60%"></div></div>
-            <span class="wind-knots">18kt</span>
-          </div>
-          <div class="wind-row">
-            <span class="wind-month">Feb</span>
-            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:65%"></div></div>
-            <span class="wind-knots">20kt</span>
-          </div>
-          <div class="wind-row">
-            <span class="wind-month">Mar</span>
-            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:72%"></div></div>
-            <span class="wind-knots">22kt</span>
-          </div>
-          <div class="wind-row">
-            <span class="wind-month">Abr</span>
-            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:78%"></div></div>
-            <span class="wind-knots">24kt</span>
-          </div>
-          <div class="wind-row">
-            <span class="wind-month">May</span>
-            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:82%"></div></div>
-            <span class="wind-knots">26kt</span>
-          </div>
-          <div class="wind-row">
-            <span class="wind-month">Jun</span>
-            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:90%"></div></div>
-            <span class="wind-knots">28kt</span>
-          </div>
-          <div class="wind-row">
-            <span class="wind-month">Jul</span>
-            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:100%"></div></div>
-            <span class="wind-knots">32kt</span>
-          </div>
-          <div class="wind-row">
-            <span class="wind-month">Ago</span>
-            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:95%"></div></div>
-            <span class="wind-knots">30kt</span>
-          </div>
-          <div class="wind-row">
-            <span class="wind-month">Sep</span>
-            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:80%"></div></div>
-            <span class="wind-knots">25kt</span>
-          </div>
-          <div class="wind-row">
-            <span class="wind-month">Oct</span>
-            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:70%"></div></div>
-            <span class="wind-knots">22kt</span>
-          </div>
-          <div class="wind-row">
-            <span class="wind-month">Nov</span>
-            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:62%"></div></div>
-            <span class="wind-knots">19kt</span>
-          </div>
-          <div class="wind-row">
-            <span class="wind-month">Dic</span>
-            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:58%"></div></div>
-            <span class="wind-knots">18kt</span>
-          </div>
+          <div class="wind-row"><span class="wind-month">Ene</span><div class="wind-bar-bg"><div class="wind-bar-fill" style="width:60%"></div></div><span class="wind-knots">18kt</span></div>
+          <div class="wind-row"><span class="wind-month">Feb</span><div class="wind-bar-bg"><div class="wind-bar-fill" style="width:65%"></div></div><span class="wind-knots">20kt</span></div>
+          <div class="wind-row"><span class="wind-month">Mar</span><div class="wind-bar-bg"><div class="wind-bar-fill" style="width:72%"></div></div><span class="wind-knots">22kt</span></div>
+          <div class="wind-row"><span class="wind-month">Abr</span><div class="wind-bar-bg"><div class="wind-bar-fill" style="width:78%"></div></div><span class="wind-knots">24kt</span></div>
+          <div class="wind-row"><span class="wind-month">May</span><div class="wind-bar-bg"><div class="wind-bar-fill" style="width:82%"></div></div><span class="wind-knots">26kt</span></div>
+          <div class="wind-row"><span class="wind-month">Jun</span><div class="wind-bar-bg"><div class="wind-bar-fill" style="width:90%"></div></div><span class="wind-knots">28kt</span></div>
+          <div class="wind-row"><span class="wind-month">Jul</span><div class="wind-bar-bg"><div class="wind-bar-fill" style="width:100%"></div></div><span class="wind-knots">32kt</span></div>
+          <div class="wind-row"><span class="wind-month">Ago</span><div class="wind-bar-bg"><div class="wind-bar-fill" style="width:95%"></div></div><span class="wind-knots">30kt</span></div>
+          <div class="wind-row"><span class="wind-month">Sep</span><div class="wind-bar-bg"><div class="wind-bar-fill" style="width:80%"></div></div><span class="wind-knots">25kt</span></div>
+          <div class="wind-row"><span class="wind-month">Oct</span><div class="wind-bar-bg"><div class="wind-bar-fill" style="width:70%"></div></div><span class="wind-knots">22kt</span></div>
+          <div class="wind-row"><span class="wind-month">Nov</span><div class="wind-bar-bg"><div class="wind-bar-fill" style="width:62%"></div></div><span class="wind-knots">19kt</span></div>
+          <div class="wind-row"><span class="wind-month">Dic</span><div class="wind-bar-bg"><div class="wind-bar-fill" style="width:58%"></div></div><span class="wind-knots">18kt</span></div>
         </div>
       </div>
     </div>
@@ -1316,7 +1107,6 @@
       <p class="section-eyebrow">El equipo</p>
       <h2 class="section-title">Aprende con los mejores</h2>
     </div>
-
     <div class="instructores-grid">
       <div class="instructor-card">
         <span class="instructor-badge">Kite · IKO L2</span>
@@ -1342,23 +1132,19 @@
     </div>
   </section>
 
-  <!-- RESERVA CTA -->
-<section class="reserva" id="reserva">
+  <!-- RESERVA -->
+  <section class="reserva" id="reserva">
     <div>
       <h2>RESERVA<br>TU CURSO</h2>
       <p>Plazas limitadas. Los fines de semana se llenan rápido. Confirma tu sitio ahora.</p>
     </div>
-
     <form action="https://formspree.io/f/xjgakbab" method="POST" class="reserva-form">
       <label for="nombre" class="sr-only">Tu nombre</label>
       <input type="text" name="nombre" id="nombre" placeholder="Tu nombre" required/>
-      
       <label for="email" class="sr-only">Email</label>
       <input type="email" name="email" id="email" placeholder="Email" required/>
-
       <label for="tel" class="sr-only">WhatsApp (opcional)</label>
       <input type="tel" name="telefono" id="tel" placeholder="WhatsApp (opcional)"/>
-
       <label for="curso-select" class="sr-only">Selecciona un curso</label>
       <select name="curso" id="curso-select" required>
         <option value="">Elige un curso...</option>
@@ -1368,59 +1154,66 @@
         <option value="SUP">SUP & Yoga (55€)</option>
         <option value="Privada">Clase privada (80€/h)</option>
       </select>
-
-      <button type="submit" class="reserva-submit">
-        CONFIRMAR RESERVA →
-      </button>
+      <button type="submit" class="reserva-submit">CONFIRMAR RESERVA →</button>
     </form>
-</section>
+  </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">Ventura Surf Co.</div>
     <div class="footer-links">
-      <a href="#">Instagram</a>
-      <a href="#">WhatsApp</a>
+      <a href="https://github.com/LNa005" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener">LinkedIn</a>
       <a href="privacy.html">Privacidad</a>
     </div>
     <p class="footer-copy">© 2026 · Corralejo, Fuerteventura. Hecho en Canarias con ❤️</p>
   </footer>
 
   <script>
- const cursor = document.getElementById('cursor');
-let mouseX = 0, mouseY = 0; // Posición real del ratón
-let cursorX = 0, cursorY = 0; // Posición suavizada del cursor
+    // ── CURSOR ──
+    const cursor = document.getElementById('cursor');
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
 
-// 1. Solo capturamos las coordenadas (sin mover el DOM aquí)
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
+    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
 
-// 2. Función de animación optimizada (Interpolación Lineal o "Lerp")
-function animateCursor() {
-  // Calculamos la distancia y aplicamos un factor de suavizado (0.15)
-  cursorX += (mouseX - cursorX) * 0.15;
-  cursorY += (mouseY - cursorY) * 0.15;
-  
-  cursor.style.left = cursorX + 'px';
-  cursor.style.top = cursorY + 'px';
-  
-  // Sincroniza con el refresco de la pantalla (Eficiencia Senior)
-  requestAnimationFrame(animateCursor);
-}
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.15;
+      cursorY += (mouseY - cursorY) * 0.15;
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top  = cursorY + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
 
-// 3. Arrancamos el bucle
-animateCursor();
-   
-
-    // Agrandar cursor en elementos interactivos
     document.querySelectorAll('a, button, .curso-card').forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('big'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
     });
 
-    // Animar barras de viento al entrar en viewport
+    // ── MENÚ HAMBURGUESA ──
+    const toggle   = document.getElementById('navToggle');
+    const navMobile = document.getElementById('navMobile');
+
+    toggle.addEventListener('click', () => {
+      const isOpen = navMobile.classList.toggle('open');
+      toggle.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen);
+      // Bloquea scroll del body cuando el menú está abierto
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Cerrar el menú al hacer clic en cualquier link
+    navMobile.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMobile.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', false);
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ── BARRAS DE VIENTO (Intersection Observer) ──
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
