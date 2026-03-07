@@ -203,16 +203,17 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 0 5% 5rem;
-      overflow: hidden;
+      overflow: hidden; /* el número 26 queda recortado dentro del hero */
     }
 
     .hero-bg {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse 80% 50% at 60% 40%, rgba(201,79,42,0.35) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(30,61,110,0.6) 0%, transparent 60%),
-        linear-gradient(170deg, #0a0a08 0%, #1a1208 40%, #2a1a08 70%, #0a0a08 100%);
+      background-image:
+        linear-gradient(to right, rgba(10,10,8,0.88) 25%, rgba(10,10,8,0.35) 100%),
+        url('img/hero.jpg');
+      background-size: cover;
+      background-position: center;
       z-index: 0;
     }
 
@@ -254,6 +255,8 @@
       z-index: 1;
       user-select: none;
       letter-spacing: -0.02em;
+      pointer-events: none;
+      clip-path: inset(0);
     }
 
     .hero-content { position: relative; z-index: 2; }
@@ -457,7 +460,7 @@
     .curso-img {
       height: 180px;
       overflow: hidden;
-      margin: -2.5rem -2.5rem 1.5rem;
+      margin: 0 -2.5rem 1.5rem; /* quitamos el margen negativo superior */
     }
 
     .curso-card.featured .curso-img { height: 240px; }
@@ -1016,7 +1019,7 @@
         <div>
           <p class="curso-num">01 / Más popular</p>
           <div class="curso-img">
-            <img src="https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=800&auto=format&fit=crop" alt="Kitesurf en las playas de Corralejo, Fuerteventura"/>
+            <img src="img/kitesurf.jpg" alt="Kitesurf en las playas de Corralejo, Fuerteventura"/>
           </div>
           <h3>Kitesurf desde cero</h3>
           <p>El programa más completo para aprender kitesurf de forma segura. En 5 días estarás navegando de forma independiente con el viento de Corralejo.</p>
@@ -1033,32 +1036,32 @@
         </div>
       </div>
       <div class="curso-card">
+        <div class="curso-img"><img src="img/surf.jpg" alt="Surfista en la playa de Corralejo"/></div>
         <p class="curso-num">02</p>
-        <div class="curso-img"><img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=800&auto=format&fit=crop" alt="Surfista en la playa de Corralejo"/></div>
         <h3>Surf intensivo</h3>
         <p>3 días, 2h por sesión. Playa de Corralejo, olas perfectas para aprender.</p>
         <div class="curso-price" style="font-size:2rem"><sup style="font-size:0.9rem">€</sup>120<span>3 días · equipo incluido</span></div>
         <div class="curso-arrow">→</div>
       </div>
       <div class="curso-card">
+        <div class="curso-img"><img src="img/windsurf.jpg" alt="Windsurf en las costas de Fuerteventura"/></div>
         <p class="curso-num">03</p>
-        <div class="curso-img"><img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&auto=format&fit=crop" alt="Windsurf en las costas de Fuerteventura"/></div>
         <h3>Windsurf</h3>
         <p>La disciplina que nació en Fuerteventura. Aprende con los mejores vientos de Europa.</p>
         <div class="curso-price" style="font-size:2rem"><sup style="font-size:0.9rem">€</sup>160<span>4 días · equipo incluido</span></div>
         <div class="curso-arrow">→</div>
       </div>
       <div class="curso-card">
+        <div class="curso-img"><img src="img/sup.jpg" alt="Paddle surf al amanecer en Fuerteventura"/></div>
         <p class="curso-num">04</p>
-        <div class="curso-img"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&auto=format&fit=crop" alt="Paddle surf al amanecer en Fuerteventura"/></div>
         <h3>SUP & Yoga</h3>
         <p>Paddle surf al amanecer + yoga en la playa. Para los que buscan calma y fuerza.</p>
         <div class="curso-price" style="font-size:2rem"><sup style="font-size:0.9rem">€</sup>55<span>sesión individual</span></div>
         <div class="curso-arrow">→</div>
       </div>
       <div class="curso-card">
+        <div class="curso-img"><img src="img/privada.jpg" alt="Instructor de surf con alumno en la playa" style="object-position: center top;"/></div>
         <p class="curso-num">05</p>
-        <div class="curso-img"><img src="https://images.unsplash.com/photo-1531722569936-825d3dd91b15?w=800&auto=format&fit=crop" alt="Instructor de surf con alumno en la playa"/></div>
         <h3>Clase privada</h3>
         <p>Tu ritmo, tu nivel, tu instructor. Para avanzar rápido o refinar la técnica.</p>
         <div class="curso-price" style="font-size:2rem"><sup style="font-size:0.9rem">€</sup>80<span>por hora</span></div>
