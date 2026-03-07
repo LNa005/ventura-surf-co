@@ -11,6 +11,12 @@
 
 ---
 
+## 📸 Vista previa
+
+![Ventura Surf Co. - Preview](./assets/preview.png)
+
+---
+
 ## ✨ Características Principales
 
 ### 💎 Diseño y Experiencia de Usuario (UX)
@@ -64,10 +70,9 @@
 
 ### 🔴 Urgente (antes de compartir como portfolio)
 
-- [ ] 🔗 **Enlazar Instagram real** — El botón del footer lleva a `#`, cámbialo por tu perfil real
-- [ ] 💬 **Enlazar WhatsApp real** — Sustituir `href="#"` por `https://wa.me/34XXXXXXXXX` con tu número
-- [ ] 📄 **Crear página de Política de Privacidad** — El enlace del footer lleva a `#` y es **obligatorio por RGPD** si el formulario recoge datos personales. Puedes usar un generador como [privacypolicygenerator.info](https://www.privacypolicygenerator.info/)
-- [ ] 🖼️ **Añadir screenshot al README** — Meter una captura real del proyecto aquí arriba para que quede bonito en GitHub
+- [x] 🔗 **Enlazar redes en el footer** — Sustituido Instagram/WhatsApp por GitHub y LinkedIn
+- [x] 📄 **Crear página de Política de Privacidad** — `privacy.html` creada y enlazada en el footer
+- [x] 🖼️ **Screenshot en el README** — Captura real añadida arriba ✨
 
 ### 🟡 Mejoras de contenido
 
@@ -78,7 +83,8 @@
 
 ### 🟢 Pulido técnico
 
-- [ ] 🏷️ **Añadir favicon** — El sitio no tiene icono en la pestaña del navegador, añade uno acorde a la marca
+- [x] 🏷️ **Favicon añadido** — `favicon.svg` con la V de marca y ola decorativa
+- [x] 📱 **Menú hamburguesa móvil** — Overlay a pantalla completa con animación y cierre automático
 - [ ] 📊 **Google Analytics o similar** — Para saber cuánta gente visita, desde dónde y qué secciones visitan más
 - [ ] 🖼️ **Optimizar imágenes** — Convertir las imágenes a formato `.webp` para mejorar la velocidad de carga
 - [ ] 🔒 **Honeypot en el formulario** — Campo oculto anti-spam para evitar bots en las reservas
