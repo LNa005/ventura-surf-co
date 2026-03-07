@@ -64,6 +64,27 @@
 
 ---
 
+## 🗂️ Estructura del proyecto
+
+```
+ventura-surf-co/
+├── index.html          # Página principal
+├── privacy.html        # Política de privacidad (RGPD)
+├── favicon.svg         # Favicon con identidad de marca
+├── .gitignore
+├── img/
+│   ├── hero.jpg        # Fondo del hero (vista aérea kitesurf)
+│   ├── kitesurf.jpg    # Card kitesurf destacada
+│   ├── surf.jpg        # Card surf intensivo
+│   ├── windsurf.jpg    # Card windsurf
+│   ├── sup.jpg         # Card SUP & yoga
+│   └── privada.jpg     # Card clase privada
+└── assets/
+    └── preview.png     # Screenshot para el README
+```
+
+---
+
 ## 📋 Pendientes / TODO List 🩵
 
 > Todo lo que queda por pulir para que esto esté *chef's kiss* ✨
@@ -76,7 +97,7 @@
 
 ### 🟡 Mejoras de contenido
 
-- [ ] 📸 **Sustituir imágenes de Unsplash** — Reemplazar por fotos reales de la escuela, instructores y la playa de Corralejo (¡marca personal!)
+- [x] 📸 **Imágenes propias** — Sustituidas todas las imágenes de Unsplash por assets generados propios (`img/`)
 - [ ] ⭐ **Sección de testimonios / reseñas** — Añadir valoraciones reales de alumnos o conectar con Google Reviews / Tripadvisor
 - [ ] 🎒 **Página de detalle de cada curso** — Cada tarjeta tiene una flecha `→` que no lleva a ningún sitio todavía
 - [ ] 🌍 **Versión en inglés / alemán** — El target turístico habla otros idiomas (Tom el instructor lo hace 😄)
