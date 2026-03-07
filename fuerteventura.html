@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ventura Surf Co. – Escuela de Surf & Kite en Fuerteventura</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ventura Surf Co. – Escuela de Surf & Kite">
+<meta property="og:description" content="Aprende surf, kite y windsurf en Corralejo. 300 días de viento al año.">
+<meta property="og:image" content="https://tu-dominio.com/img/social-preview.jpg">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #0a0a08;
+      --white:   #f7f4ee;
+      --sand:    #d4b896;
+      --rust:    #c94f2a;
+      --blue:    #1e3d6e;
+      --sky:     #6aaecc;
+      --muted:   #8a8070;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Syne', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    .sr-only { 
+      position: absolute; 
+      width: 1px; 
+      height: 1px; 
+      padding: 0; 
+      margin: -1px; 
+      overflow: hidden; 
+      clip: rect(0,0,0,0); 
+      border: 0; 
+    }
+
+    /* CURSOR CUSTOM */
+    .cursor {
+      position: fixed;
+      width: 12px; height: 12px;
+      background: var(--rust);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s, width 0.2s, height 0.2s;
+      mix-blend-mode: difference;
+    }
+
+    .cursor.big {
+      width: 50px; height: 50px;
+      background: var(--rust);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      mix-blend-mode: difference;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+    }
+
+    .logo sup {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.2em;
+      vertical-align: top;
+      margin-top: 0.4rem;
+      display: inline-block;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--rust); }
+
+    .nav-cta {
+      border: 1.5px solid var(--white);
+      padding: 0.5rem 1.3rem;
+      border-radius: 2px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 5% 5rem;
+      overflow: hidden;
+    }
+
+    /* ── FONDO DEL HERO ──────────────────────────────────────────────
+       Actualmente el fondo es un gradiente CSS (no hay foto).
+       Para añadir una imagen de fondo real, descomenta la línea
+       background-image de abajo y ajusta la URL:
+         · Unsplash: https://unsplash.com → busca "corralejo beach aerial"
+         · Foto propia: url('img/hero-fondo.jpg')
+       El gradiente encima asegura que el texto siga siendo legible.
+    ─────────────────────────────────────────────────────────────────── */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      /* background-image: url('https://images.unsplash.com/photo-TUURL?w=1600&auto=format&fit=crop'); */
+      /* background-size: cover; */
+      /* background-position: center; */
+      background:
+        radial-gradient(ellipse 80% 50% at 60% 40%, rgba(201,79,42,0.35) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(30,61,110,0.6) 0%, transparent 60%),
+        linear-gradient(170deg, #0a0a08 0%, #1a1208 40%, #2a1a08 70%, #0a0a08 100%);
+      z-index: 0;
+    }
+
+    /* Textura de grano */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* Líneas decorativas */
+    .hero-lines {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .hero-lines span {
+      position: absolute;
+      display: block;
+      background: rgba(247,244,238,0.04);
+    }
+
+    .hero-lines span:nth-child(1) {
+      width: 1px; height: 100%;
+      left: 33%;
+    }
+
+    .hero-lines span:nth-child(2) {
+      width: 1px; height: 100%;
+      left: 66%;
+    }
+
+    .hero-lines span:nth-child(3) {
+      width: 100%; height: 1px;
+      top: 55%;
+    }
+
+    /* Número grande de fondo */
+    .hero-number {
+      position: absolute;
+      right: 3%;
+      top: 50%;
+      transform: translateY(-60%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(12rem, 25vw, 22rem);
+      color: rgba(247,244,238,0.03);
+      line-height: 1;
+      z-index: 1;
+      user-select: none;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-location {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-location::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--rust);
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 14vw, 13rem);
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 0.1em;
+    }
+
+    .hero h1 .outline {
+      -webkit-text-stroke: 2px var(--white);
+      color: transparent;
+    }
+
+    .hero h1 .accent { color: var(--rust); }
+
+    .hero-sub {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .hero-desc {
+      font-family: 'Crimson Pro', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: rgba(247,244,238,0.65);
+      max-width: 38ch;
+      line-height: 1.5;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-fill {
+      background: var(--rust);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-fill:hover { background: #a63d1e; transform: translateY(-3px); }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(247,244,238,0.4);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: border-color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover { border-color: var(--white); transform: translateY(-3px); }
+
+    /* scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      z-index: 2;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--rust), transparent);
+      animation: scrollPulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--rust);
+      padding: 0.9rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-inner {
+      display: inline-flex;
+      animation: ticker 20s linear infinite;
+    }
+
+    .ticker-item {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      padding: 0 2.5rem;
+      color: var(--white);
+    }
+
+    .ticker-dot {
+      color: rgba(247,244,238,0.5);
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── CURSOS ── */
+    .cursos {
+      padding: 7rem 5%;
+      position: relative;
+    }
+
+    .cursos-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      letter-spacing: 0.03em;
+      line-height: 0.95;
+      color: var(--white);
+    }
+
+    .cursos-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1.5px;
+      background: rgba(247,244,238,0.06);
+    }
+
+    .curso-card {
+      background: var(--black);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      cursor: none;
+    }
+
+    .curso-card:hover { background: #111108; }
+
+    .curso-card.featured {
+      grid-row: span 2;
+      background: var(--blue);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 480px;
+    }
+
+    /* ── IMAGEN EN CARDS DE CURSO ────────────────────────────────────
+       Solo la card "featured" (la grande) lleva imagen de fondo.
+       Las cards pequeñas mantienen el fondo oscuro con icono.
+       Si quieres añadir imagen a las pequeñas también, usa el mismo
+       patrón: añade un <div class="curso-img"> al HTML de esa card.
+    ────────────────────────────────────────────────────────────── */
+    .curso-img {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;       /* recorta la imagen */
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .curso-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;        /* rellena sin deformar */
+      object-position: center;
+      display: block;
+      transition: transform 0.5s ease;
+      filter: brightness(0.85); /* oscurece un poco para que contraste con texto */
+    }
+
+    .curso-card:hover .curso-img img {
+      transform: scale(1.05); /* zoom suave en hover */
+    }
+
+    /* Imagen de fondo en la card destacada (ocupa la mitad superior) */
+    .curso-card.featured .curso-img {
+      height: 260px;
+    }
+
+    .curso-card.featured:hover { background: #243f6e; }
+
+    .curso-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .curso-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: block;
+      filter: grayscale(20%);
+    }
+
+    .curso-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+      line-height: 1;
+    }
+
+    .curso-card.featured h3 {
+      font-size: 3rem;
+    }
+
+    .curso-card p {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.05rem;
+      color: rgba(247,244,238,0.6);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .curso-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid rgba(247,244,238,0.2);
+      border-radius: 2px;
+      color: rgba(247,244,238,0.6);
+    }
+
+    .curso-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .curso-price sup {
+      font-size: 1.2rem;
+      vertical-align: top;
+      margin-top: 0.5rem;
+      color: var(--sand);
+    }
+
+    .curso-price span {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: block;
+      margin-top: 0.2rem;
+    }
+
+    .curso-arrow {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      width: 40px; height: 40px;
+      border: 1.5px solid rgba(247,244,238,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .curso-card:hover .curso-arrow {
+      border-color: var(--rust);
+      background: var(--rust);
+    }
+
+    /* ── IMÁGENES DE LAS CARDS DE CURSOS ──────────────────────────────
+       .curso-img es el contenedor que recorta la foto.
+       Si quieres cambiar la altura, toca solo "height" aquí abajo.
+       La card destacada (featured) tiene más altura para dar más peso visual.
+    ─────────────────────────────────────────────────────────────────── */
+    .curso-img {
+      height: 180px;
+      overflow: hidden;         /* recorta la imagen sin deformarla */
+      margin: -2.5rem -2.5rem 1.5rem; /* sangra hasta los bordes del padding de la card */
+    }
+
+    /* La card grande tiene más espacio para la foto */
+    .curso-card.featured .curso-img {
+      height: 240px;
+    }
+
+    /* La imagen ocupa todo el contenedor sin deformarse */
+    .curso-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;        /* rellena sin estirar — clave para que quede bien */
+      object-position: center;  /* punto de recorte — prueba "top" si la acción está arriba */
+      display: block;
+      transition: transform 0.5s ease;
+      filter: brightness(0.85); /* oscurece un poco para que el texto encima sea legible */
+    }
+
+    /* Zoom suave al hacer hover */
+    .curso-card:hover .curso-img img {
+      transform: scale(1.07);
+      filter: brightness(0.95);
+    }
+    .viento {
+      padding: 5rem 5%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      border-top: 1px solid rgba(247,244,238,0.08);
+    }
+
+    .viento-text .section-eyebrow { margin-bottom: 1rem; }
+
+    .viento-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 0.95;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .viento-text h2 em {
+      font-family: 'Crimson Pro', serif;
+      font-style: italic;
+      color: var(--sky);
+    }
+
+    .viento-text p {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.15rem;
+      color: rgba(247,244,238,0.6);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .stats-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-item {
+      border-left: 2px solid var(--rust);
+      padding-left: 1rem;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--white);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    /* Panel de viento visual */
+    .viento-visual {
+      position: relative;
+    }
+
+    .wind-panel {
+      background: #111108;
+      border: 1px solid rgba(247,244,238,0.08);
+      border-radius: 4px;
+      padding: 2.5rem;
+    }
+
+    .wind-panel-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .wind-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .wind-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .wind-month {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      width: 40px;
+      flex-shrink: 0;
+    }
+
+    .wind-bar-bg {
+      flex: 1;
+      height: 6px;
+      background: rgba(247,244,238,0.07);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .wind-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(to right, var(--sky), var(--rust));
+      transition: width 1s ease;
+    }
+
+    .wind-knots {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      width: 50px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* ── INSTRUCTORES ── */
+    .instructores {
+      padding: 7rem 5%;
+      border-top: 1px solid rgba(247,244,238,0.08);
+    }
+
+    .instructores-header {
+      margin-bottom: 4rem;
+    }
+
+    .instructores-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(247,244,238,0.06);
+    }
+
+    .instructor-card {
+      background: var(--black);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .instructor-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .av-blue { background: var(--blue); }
+    .av-rust { background: var(--rust); }
+    .av-sand { background: #7a5c3a; }
+
+    .instructor-card h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .instructor-role {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 1rem;
+    }
+
+    .instructor-bio {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1rem;
+      color: rgba(247,244,238,0.55);
+      line-height: 1.65;
+    }
+
+    .instructor-badge {
+      position: absolute;
+      top: 2rem; right: 2rem;
+      background: rgba(247,244,238,0.06);
+      border-radius: 2px;
+      padding: 0.3rem 0.7rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sand);
+    }
+
+    /* ── RESERVA / CTA ── */
+    .reserva {
+      margin: 0 5% 7rem;
+      background: var(--rust);
+      border-radius: 4px;
+      padding: 5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reserva::before {
+      content: 'SURF';
+      position: absolute;
+      right: -2%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18rem;
+      color: rgba(247,244,238,0.07);
+      line-height: 1;
+      pointer-events: none;
+      letter-spacing: -0.03em;
+    }
+
+    .reserva h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      line-height: 0.9;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    .reserva p {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.15rem;
+      color: rgba(247,244,238,0.75);
+      margin-top: 1rem;
+      max-width: 40ch;
+    }
+
+    .reserva-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      min-width: 280px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .reserva-form input,
+    .reserva-form select {
+      padding: 0.9rem 1.2rem;
+      background: rgba(247,244,238,0.15);
+      border: 1px solid rgba(247,244,238,0.3);
+      border-radius: 2px;
+      color: var(--white);
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      transition: background 0.2s;
+    }
+
+    .reserva-form input::placeholder { color: rgba(247,244,238,0.55); }
+
+    .reserva-form input:focus,
+    .reserva-form select:focus { background: rgba(247,244,238,0.22); }
+
+    .reserva-form select option { background: var(--black); color: var(--white); }
+
+    .reserva-submit {
+      padding: 1rem;
+      background: var(--white);
+      color: var(--rust);
+      border: none;
+      border-radius: 2px;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: none;
+      transition: background 0.2s;
+      margin-top: 0.4rem;
+    }
+
+    .reserva-submit:hover { background: var(--sand); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(247,244,238,0.08);
+      padding: 3rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--rust); }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .hero-location { animation: fadeIn 0.6s 0.2s both; }
+    .hero h1       { animation: fadeUp 0.8s 0.35s both; }
+    .hero-sub      { animation: fadeUp 0.8s 0.55s both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      .hero h1 { font-size: 5rem; }
+      .cursos-grid { grid-template-columns: 1fr; }
+      .curso-card.featured { grid-row: auto; min-height: auto; }
+      .viento { grid-template-columns: 1fr; gap: 3rem; }
+      .instructores-grid { grid-template-columns: 1fr; }
+      .reserva { grid-template-columns: 1fr; padding: 3rem 2.5rem; }
+      .reserva::before { display: none; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Course",
+        "name": "Kitesurf desde cero",
+        "description": "Programa completo de 5 días para aprender kitesurf de forma segura en Corralejo.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Ventura Surf Co.",
+          "sameAs": "https://tu-dominio.com"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "395.00",
+          "priceCurrency": "EUR",
+          "category": "Kitesurf"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Course",
+        "name": "Surf intensivo",
+        "description": "3 días de surf intensivo en la playa de Corralejo para todos los niveles.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Ventura Surf Co."
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "120.00",
+          "priceCurrency": "EUR",
+          "category": "Surf"
+        }
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">Ventura<sup>Surf Co.</sup></a>
+    <ul>
+      <li><a href="#cursos">Cursos</a></li>
+      <li><a href="#viento">El viento</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#reserva" class="nav-cta">Reservar</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <!--
+      FONDO DEL HERO – Imagen de fondo principal
+      Actualmente es un gradiente CSS puro.
+      Para poner una foto real, añade dentro de .hero-bg en el CSS:
+        background-image: url('TU-FOTO.jpg');
+        background-size: cover;
+        background-position: center;
+      O sustituye el div.hero-bg por un <img> con position:absolute, inset:0, z-index:0
+      Sugerencia Unsplash: "fuerteventura beach aerial" o "corralejo coast sunset"
+    -->
+    <div class="hero-bg"></div>
+    <div class="hero-lines">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="hero-number">26</div>
+
+    <div class="hero-content">
+      <p class="hero-location">📍 Corralejo · Fuerteventura</p>
+      <h1>
+        RIDE<br>
+        THE<br>
+        <span class="accent">WIND</span>
+      </h1>
+      <div class="hero-sub">
+        <p class="hero-desc">Escuela de surf y kitesurf en la isla más ventosa de Europa. Aprende, mejora, vuela.</p>
+        <div class="hero-ctas">
+          <a href="#cursos" class="btn-fill">Ver cursos</a>
+          <a href="#viento" class="btn-ghost">¿Por qué Fuerte?</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      scroll
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <!-- duplicado para loop continuo -->
+      <span class="ticker-item">Surf <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Kitesurf <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Windsurf <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">SUP <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Corralejo <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Fuerteventura <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Clases para todos los niveles <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Surf <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Kitesurf <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Windsurf <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">SUP <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Corralejo <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Fuerteventura <span class="ticker-dot">◆</span></span>
+      <span class="ticker-item">Clases para todos los niveles <span class="ticker-dot">◆</span></span>
+    </div>
+  </div>
+
+  <!-- CURSOS -->
+  <section class="cursos" id="cursos">
+    <div class="cursos-header">
+      <div>
+        <p class="section-eyebrow">Lo que enseñamos</p>
+        <h2 class="section-title">Nuestros<br>cursos</h2>
+      </div>
+      <a href="#reserva" class="btn-fill">Ver todos →</a>
+    </div>
+
+    <div class="cursos-grid">
+
+      <!-- DESTACADO -->
+      <div class="curso-card featured">
+        <div>
+          <p class="curso-num">01 / Más popular</p>
+
+          <!--
+            IMAGEN CARD DESTACADA – Kitesurf
+            Esta es la card más grande, la imagen tiene más protagonismo.
+            Para cambiarla:
+              · Unsplash gratis: https://unsplash.com → busca "kitesurfing fuerteventura"
+              · Foto propia: cambia el src por "img/kitesurf.jpg" (o la ruta que uses)
+            El atributo alt es importante para SEO — descríbela brevemente.
+          -->
+          <div class="curso-img">
+            <img
+              src="https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=800&auto=format&fit=crop"
+              alt="Kitesurf en las playas de Corralejo, Fuerteventura"
+            />
+          </div>
+
+          <h3>Kitesurf desde cero</h3>
+          <p>El programa más completo para aprender kitesurf de forma segura. En 5 días estarás navegando de forma independiente con el viento de Corralejo.</p>
+          <div class="curso-tags">
+            <span class="tag">5 días</span>
+            <span class="tag">Principiante</span>
+            <span class="tag">Equipo incluido</span>
+            <span class="tag">Certificado IKO</span>
+          </div>
+        </div>
+        <div>
+          <div class="curso-price">
+            <sup>€</sup>395
+            <span>por persona · mín. 2 pax</span>
+          </div>
+          <div class="curso-arrow">→</div>
+        </div>
+      </div>
+
+      <!-- SURF -->
+      <div class="curso-card">
+        <p class="curso-num">02</p>
+        <!--
+          IMAGEN CARD SURF
+          Sugerencia Unsplash: busca "surfing canary islands" o "surf wave beginner"
+          Para foto local: src="img/surf.jpg"
+        -->
+        <div class="curso-img">
+          <img
+            src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=800&auto=format&fit=crop"
+            alt="Surfista en la playa de Corralejo"
+          />
+        </div>
+        <h3>Surf intensivo</h3>
+        <p>3 días, 2h por sesión. Playa de Corralejo, olas perfectas para aprender.</p>
+        <div class="curso-price" style="font-size:2rem">
+          <sup style="font-size:0.9rem">€</sup>120
+          <span>3 días · equipo incluido</span>
+        </div>
+        <div class="curso-arrow">→</div>
+      </div>
+
+      <!-- WINDSURF -->
+      <div class="curso-card">
+        <p class="curso-num">03</p>
+        <!--
+          IMAGEN CARD WINDSURF
+          Sugerencia Unsplash: busca "windsurfing ocean" o "windsurf fuerteventura"
+          Para foto local: src="img/windsurf.jpg"
+        -->
+        <div class="curso-img">
+          <img
+            src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&auto=format&fit=crop"
+            alt="Windsurf en las costas de Fuerteventura"
+          />
+        </div>
+        <h3>Windsurf</h3>
+        <p>La disciplina que nació en Fuerteventura. Aprende con los mejores vientos de Europa.</p>
+        <div class="curso-price" style="font-size:2rem">
+          <sup style="font-size:0.9rem">€</sup>160
+          <span>4 días · equipo incluido</span>
+        </div>
+        <div class="curso-arrow">→</div>
+      </div>
+
+      <!-- SUP -->
+      <div class="curso-card">
+        <p class="curso-num">04</p>
+        <!--
+          IMAGEN CARD SUP & YOGA
+          Sugerencia Unsplash: busca "paddle surf sunrise" o "sup yoga beach"
+          Para foto local: src="img/sup.jpg"
+        -->
+        <div class="curso-img">
+          <img
+            src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&auto=format&fit=crop"
+            alt="Paddle surf al amanecer en Fuerteventura"
+          />
+        </div>
+        <h3>SUP & Yoga</h3>
+        <p>Paddle surf al amanecer + yoga en la playa. Para los que buscan calma y fuerza.</p>
+        <div class="curso-price" style="font-size:2rem">
+          <sup style="font-size:0.9rem">€</sup>55
+          <span>sesión individual</span>
+        </div>
+        <div class="curso-arrow">→</div>
+      </div>
+
+      <!-- PRIVADO -->
+      <div class="curso-card">
+        <p class="curso-num">05</p>
+        <!--
+          IMAGEN CARD CLASE PRIVADA
+          Sugerencia Unsplash: busca "surf instructor lesson" o "kite lesson beach"
+          Para foto local: src="img/privada.jpg"
+        -->
+        <div class="curso-img">
+          <img
+            src="https://images.unsplash.com/photo-1531722569936-825d3dd91b15?w=800&auto=format&fit=crop"
+            alt="Instructor de surf con alumno en la playa"
+          />
+        </div>
+        <h3>Clase privada</h3>
+        <p>Tu ritmo, tu nivel, tu instructor. Para avanzar rápido o refinar la técnica.</p>
+        <div class="curso-price" style="font-size:2rem">
+          <sup style="font-size:0.9rem">€</sup>80
+          <span>por hora</span>
+        </div>
+        <div class="curso-arrow">→</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VIENTO -->
+  <section class="viento" id="viento">
+    <div class="viento-text">
+      <p class="section-eyebrow">El secreto de la isla</p>
+      <h2>El <em>viento</em><br>que lo cambia<br>todo</h2>
+      <p>Fuerteventura es la isla más ventosa de Europa. El alisio sopla de media 300 días al año, lo que la convierte en el destino número uno del mundo para kitesurf y windsurf.</p>
+      <div class="stats-list">
+        <div class="stat-item">
+          <span class="stat-num">300</span>
+          <span class="stat-label">Días de viento al año</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">25kt</span>
+          <span class="stat-label">Media en verano</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">22°C</span>
+          <span class="stat-label">Temperatura del agua</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">#1</span>
+          <span class="stat-label">Destino kite en Europa</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="viento-visual">
+      <div class="wind-panel">
+        <p class="wind-panel-title">Fuerza del viento por mes (nudos)</p>
+        <div class="wind-bars">
+          <div class="wind-row">
+            <span class="wind-month">Ene</span>
+            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:60%"></div></div>
+            <span class="wind-knots">18kt</span>
+          </div>
+          <div class="wind-row">
+            <span class="wind-month">Feb</span>
+            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:65%"></div></div>
+            <span class="wind-knots">20kt</span>
+          </div>
+          <div class="wind-row">
+            <span class="wind-month">Mar</span>
+            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:72%"></div></div>
+            <span class="wind-knots">22kt</span>
+          </div>
+          <div class="wind-row">
+            <span class="wind-month">Abr</span>
+            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:78%"></div></div>
+            <span class="wind-knots">24kt</span>
+          </div>
+          <div class="wind-row">
+            <span class="wind-month">May</span>
+            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:82%"></div></div>
+            <span class="wind-knots">26kt</span>
+          </div>
+          <div class="wind-row">
+            <span class="wind-month">Jun</span>
+            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:90%"></div></div>
+            <span class="wind-knots">28kt</span>
+          </div>
+          <div class="wind-row">
+            <span class="wind-month">Jul</span>
+            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:100%"></div></div>
+            <span class="wind-knots">32kt</span>
+          </div>
+          <div class="wind-row">
+            <span class="wind-month">Ago</span>
+            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:95%"></div></div>
+            <span class="wind-knots">30kt</span>
+          </div>
+          <div class="wind-row">
+            <span class="wind-month">Sep</span>
+            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:80%"></div></div>
+            <span class="wind-knots">25kt</span>
+          </div>
+          <div class="wind-row">
+            <span class="wind-month">Oct</span>
+            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:70%"></div></div>
+            <span class="wind-knots">22kt</span>
+          </div>
+          <div class="wind-row">
+            <span class="wind-month">Nov</span>
+            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:62%"></div></div>
+            <span class="wind-knots">19kt</span>
+          </div>
+          <div class="wind-row">
+            <span class="wind-month">Dic</span>
+            <div class="wind-bar-bg"><div class="wind-bar-fill" style="width:58%"></div></div>
+            <span class="wind-knots">18kt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTRUCTORES -->
+  <section class="instructores" id="equipo">
+    <div class="instructores-header">
+      <p class="section-eyebrow">El equipo</p>
+      <h2 class="section-title">Aprende con los mejores</h2>
+    </div>
+
+    <div class="instructores-grid">
+      <div class="instructor-card">
+        <span class="instructor-badge">Kite · IKO L2</span>
+        <div class="instructor-avatar av-rust">🤙</div>
+        <h4>Carlos Medina</h4>
+        <p class="instructor-role">Instructor de Kitesurf</p>
+        <p class="instructor-bio">Lleva 15 años en la playa de Corralejo. Ha formado a más de 2.000 alumnos. Paciencia infinita y muy buenas vibras.</p>
+      </div>
+      <div class="instructor-card">
+        <span class="instructor-badge">Surf · ISA L1</span>
+        <div class="instructor-avatar av-blue">🏄</div>
+        <h4>Sara Vega</h4>
+        <p class="instructor-role">Instructora de Surf & SUP</p>
+        <p class="instructor-bio">Campeona regional de surf en 2019. Especialista en enseñar a niños y adultos desde cero con total seguridad.</p>
+      </div>
+      <div class="instructor-card">
+        <span class="instructor-badge">Wind · PWA</span>
+        <div class="instructor-avatar av-sand">💨</div>
+        <h4>Tom Bauer</h4>
+        <p class="instructor-role">Instructor de Windsurf</p>
+        <p class="instructor-bio">Alemán de nacimiento, majorero de corazón. Compitió en el circuito PWA durante 8 años. Clases en español, inglés y alemán.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVA CTA -->
+<section class="reserva" id="reserva">
+    <div>
+      <h2>RESERVA<br>TU CURSO</h2>
+      <p>Plazas limitadas. Los fines de semana se llenan rápido. Confirma tu sitio ahora.</p>
+    </div>
+
+    <form action="https://formspree.io/f/xjgakbab" method="POST" class="reserva-form">
+      <label for="nombre" class="sr-only">Tu nombre</label>
+      <input type="text" name="nombre" id="nombre" placeholder="Tu nombre" required/>
+      
+      <label for="email" class="sr-only">Email</label>
+      <input type="email" name="email" id="email" placeholder="Email" required/>
+
+      <label for="tel" class="sr-only">WhatsApp (opcional)</label>
+      <input type="tel" name="telefono" id="tel" placeholder="WhatsApp (opcional)"/>
+
+      <label for="curso-select" class="sr-only">Selecciona un curso</label>
+      <select name="curso" id="curso-select" required>
+        <option value="">Elige un curso...</option>
+        <option value="Kitesurf">Kitesurf desde cero (395€)</option>
+        <option value="Surf">Surf intensivo (120€)</option>
+        <option value="Windsurf">Windsurf (160€)</option>
+        <option value="SUP">SUP & Yoga (55€)</option>
+        <option value="Privada">Clase privada (80€/h)</option>
+      </select>
+
+      <button type="submit" class="reserva-submit">
+        CONFIRMAR RESERVA →
+      </button>
+    </form>
+</section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Ventura Surf Co.</div>
+    <div class="footer-links">
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+      <a href="#">Privacidad</a>
+    </div>
+    <p class="footer-copy">© 2026 · Corralejo, Fuerteventura. Hecho en Canarias con ❤️</p>
+  </footer>
+
+  <script>
+ const cursor = document.getElementById('cursor');
+let mouseX = 0, mouseY = 0; // Posición real del ratón
+let cursorX = 0, cursorY = 0; // Posición suavizada del cursor
+
+// 1. Solo capturamos las coordenadas (sin mover el DOM aquí)
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+// 2. Función de animación optimizada (Interpolación Lineal o "Lerp")
+function animateCursor() {
+  // Calculamos la distancia y aplicamos un factor de suavizado (0.15)
+  cursorX += (mouseX - cursorX) * 0.15;
+  cursorY += (mouseY - cursorY) * 0.15;
+  
+  cursor.style.left = cursorX + 'px';
+  cursor.style.top = cursorY + 'px';
+  
+  // Sincroniza con el refresco de la pantalla (Eficiencia Senior)
+  requestAnimationFrame(animateCursor);
+}
+
+// 3. Arrancamos el bucle
+animateCursor();
+   
+
+    // Agrandar cursor en elementos interactivos
+    document.querySelectorAll('a, button, .curso-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+    });
+
+    // Animar barras de viento al entrar en viewport
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.wind-bar-fill').forEach(bar => {
+            const w = bar.style.width;
+            bar.style.width = '0%';
+            setTimeout(() => { bar.style.width = w; }, 100);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const windPanel = document.querySelector('.wind-panel');
+    if (windPanel) observer.observe(windPanel);
+  </script>
+</body>
+</html>
