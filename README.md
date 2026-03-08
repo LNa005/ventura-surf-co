@@ -2,7 +2,9 @@
 
 [![Website Status](https://img.shields.io/badge/Status-Live-success.svg)](https://lna005.github.io/ventura-surf-co/)
 [![Tech](https://img.shields.io/badge/Stack-HTML5%20|%20CSS3%20|%20JS-blue.svg)](#)
-[![Accessibility](https://img.shields.io/badge/Accessibility-A11y-orange.svg)](#)
+[![Lighthouse Practices](https://img.shields.io/badge/Lighthouse%20Practices-100-brightgreen.svg)](#)
+[![Lighthouse SEO](https://img.shields.io/badge/Lighthouse%20SEO-91-green.svg)](#)
+[![Lighthouse Accessibility](https://img.shields.io/badge/Lighthouse%20A11y-89-yellow.svg)](#)
 [![Made with love](https://img.shields.io/badge/Made%20with-💙-pink.svg)](#)
 
 **Ventura Surf Co.** es una landing page de alto rendimiento diseñada para una escuela de deportes acuáticos en Fuerteventura 🌊. El proyecto combina una estética editorial moderna con optimizaciones técnicas de nivel profesional — y mucho amor por el océano. 🐚✨
@@ -116,8 +118,8 @@ ventura-surf-co/
 - [x] 🧪 **Formulario de Formspree testeado** — Reserva de prueba enviada y recibida correctamente
 - [ ] 🎭 **Animaciones de entrada con scroll** — Extender el Intersection Observer para que todas las secciones aparezcan con fade al entrar en viewport
 - [ ] 💀 **Skeleton loading** — Placeholders animados mientras cargan las imágenes
-- [ ] 🔦 **Lighthouse score 90+** — Ejecutar auditoría en Chrome DevTools y añadir captura al README
-- [ ] 🖼️ **Meta og:image real** — Cambiar el placeholder `tu-dominio.com` por la URL real de GitHub Pages
+- [x] 🔦 **Lighthouse score** — Prácticas recomendadas 100 · SEO 91 · Accesibilidad 89
+- [x] 🖼️ **Meta og:image real** — URL actualizada a GitHub Pages
 - [ ] 🔗 **LinkedIn real** — Actualizar `href="#"` con la URL del perfil cuando esté creado
 - [ ] 📱 **Revisar en iOS Safari** — Algunos efectos CSS se comportan diferente en iPhone
 
