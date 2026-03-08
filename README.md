@@ -114,9 +114,21 @@ ventura-surf-co/
 - [x] 🖼️ **Imágenes optimizadas a `.webp`** — Todas las imágenes convertidas para mejor rendimiento
 - [x] 🔒 **Honeypot anti-spam** — Campo oculto `_gotcha` en el formulario para bloquear bots
 - [x] 🧪 **Formulario de Formspree testeado** — Reserva de prueba enviada y recibida correctamente
+- [ ] 🎭 **Animaciones de entrada con scroll** — Extender el Intersection Observer para que todas las secciones aparezcan con fade al entrar en viewport
+- [ ] 💀 **Skeleton loading** — Placeholders animados mientras cargan las imágenes
+- [ ] 🔦 **Lighthouse score 90+** — Ejecutar auditoría en Chrome DevTools y añadir captura al README
+- [ ] 🖼️ **Meta og:image real** — Cambiar el placeholder `tu-dominio.com` por la URL real de GitHub Pages
+- [ ] 🔗 **LinkedIn real** — Actualizar `href="#"` con la URL del perfil cuando esté creado
+- [ ] 📱 **Revisar en iOS Safari** — Algunos efectos CSS se comportan diferente en iPhone
+
+### 📄 Calidad de código
+
+- [ ] 💬 **JSDoc en funciones JS** — Añadir documentación a `animateCursor()` y el Intersection Observer
+- [ ] 📝 **CHANGELOG.md** — Registrar los cambios por versión siguiendo el estándar [Keep a Changelog](https://keepachangelog.com/es/)
 
 ### 💅 Nice to have (futuro)
 
+- [ ] 🌍 **Versión en inglés / alemán** — El target turístico habla otros idiomas (Tom el instructor lo hace 😄)
 - [ ] 🗓️ **Calendario de disponibilidad** — Integrar Calendly o similar para que los usuarios vean fechas disponibles
 - [ ] 🌤️ **Widget de viento en tiempo real** — API de Windguru o Windy para mostrar las condiciones actuales de la playa
 - [ ] 🖼️ **Galería de fotos** — Un lightbox con imágenes reales de las clases
