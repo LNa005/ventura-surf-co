@@ -2,9 +2,8 @@
 
 [![Website Status](https://img.shields.io/badge/Status-Live-success.svg)](https://lna005.github.io/ventura-surf-co/)
 [![Tech](https://img.shields.io/badge/Stack-HTML5%20|%20CSS3%20|%20JS-blue.svg)](#)
-[![Lighthouse Practices](https://img.shields.io/badge/Lighthouse%20Practices-100-brightgreen.svg)](#)
-[![Lighthouse SEO](https://img.shields.io/badge/Lighthouse%20SEO-91-green.svg)](#)
-[![Lighthouse Accessibility](https://img.shields.io/badge/Lighthouse%20A11y-89-yellow.svg)](#)
+[![Lighthouse Desktop](https://img.shields.io/badge/Lighthouse%20Desktop-96%20%7C%2092%20%7C%20100%20%7C%2091-brightgreen.svg)](#)
+[![Lighthouse Mobile](https://img.shields.io/badge/Lighthouse%20Mobile-79%20%7C%2093%20%7C%20100%20%7C%2091-green.svg)](#)
 [![Made with love](https://img.shields.io/badge/Made%20with-💙-pink.svg)](#)
 
 **Ventura Surf Co.** es una landing page de alto rendimiento diseñada para una escuela de deportes acuáticos en Fuerteventura 🌊. El proyecto combina una estética editorial moderna con optimizaciones técnicas de nivel profesional — y mucho amor por el océano. 🐚✨
@@ -107,7 +106,6 @@ ventura-surf-co/
 - [x] 📸 **Imágenes propias** — Sustituidas todas las imágenes de Unsplash por assets generados propios (`img/`)
 - [x] ⭐ **Sección de testimonios** — 3 reseñas de alumnos con nombre, curso y valoración
 - [x] 🎒 **Páginas de detalle de cada curso** — 5 páginas individuales con programa, incluye y sidebar de reserva
-- [ ] 🌍 **Versión en inglés / alemán** — El target turístico habla otros idiomas (Tom el instructor lo hace 😄)
 
 ### 🟢 Pulido técnico
 
@@ -118,7 +116,8 @@ ventura-surf-co/
 - [x] 🧪 **Formulario de Formspree testeado** — Reserva de prueba enviada y recibida correctamente
 - [ ] 🎭 **Animaciones de entrada con scroll** — Extender el Intersection Observer para que todas las secciones aparezcan con fade al entrar en viewport
 - [ ] 💀 **Skeleton loading** — Placeholders animados mientras cargan las imágenes
-- [x] 🔦 **Lighthouse score** — Prácticas recomendadas 100 · SEO 91 · Accesibilidad 89
+- [x] 🔦 **Lighthouse score** — Desktop 96/92/100/91 · Mobile 79/93/100/91
+- [ ] 🖼️ **Comprimir imágenes de cards** — Las webp de los cursos pesan demasiado para móvil, bajarlas a <150kb con squoosh para subir el rendimiento móvil de 79 a 90+
 - [x] 🖼️ **Meta og:image real** — URL actualizada a GitHub Pages
 - [ ] 🔗 **LinkedIn real** — Actualizar `href="#"` con la URL del perfil cuando esté creado
 - [ ] 📱 **Revisar en iOS Safari** — Algunos efectos CSS se comportan diferente en iPhone
@@ -136,6 +135,7 @@ ventura-surf-co/
 - [ ] 🖼️ **Galería de fotos** — Un lightbox con imágenes reales de las clases
 - [ ] 💳 **Pago online** — Integrar Stripe para que las reservas se puedan confirmar con pago directo
 - [ ] 📧 **Email de confirmación automático** — Con Formspree Pro o una función serverless (Netlify Functions)
+- [ ] 🌍 **Versión en inglés / alemán** — El target turístico habla otros idiomas (Tom el instructor lo hace 😄) - Requiere i18n completo (duplicar páginas o sistema de traducción). pendiente de scope.
 
 ---
 
