@@ -69,6 +69,11 @@
 ```
 ventura-surf-co/
 ├── index.html          # Página principal
+├── kitesurf.html       # Detalle curso kitesurf
+├── surf.html           # Detalle curso surf
+├── windsurf.html       # Detalle curso windsurf
+├── sup.html            # Detalle curso SUP & yoga
+├── privada.html        # Detalle clase privada
 ├── privacy.html        # Política de privacidad (RGPD)
 ├── favicon.svg         # Favicon con identidad de marca
 ├── .gitignore
@@ -98,8 +103,8 @@ ventura-surf-co/
 ### 🟡 Mejoras de contenido
 
 - [x] 📸 **Imágenes propias** — Sustituidas todas las imágenes de Unsplash por assets generados propios (`img/`)
-- [ ] ⭐ **Sección de testimonios / reseñas** — Añadir valoraciones reales de alumnos o conectar con Google Reviews / Tripadvisor
-- [ ] 🎒 **Página de detalle de cada curso** — Cada tarjeta tiene una flecha `→` que no lleva a ningún sitio todavía
+- [x] ⭐ **Sección de testimonios** — 3 reseñas de alumnos con nombre, curso y valoración
+- [x] 🎒 **Páginas de detalle de cada curso** — 5 páginas individuales con programa, incluye y sidebar de reserva
 - [ ] 🌍 **Versión en inglés / alemán** — El target turístico habla otros idiomas (Tom el instructor lo hace 😄)
 
 ### 🟢 Pulido técnico
