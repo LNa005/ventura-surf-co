@@ -4,7 +4,18 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ventura Surf Co. – Escuela de Surf & Kite en Fuerteventura</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+
+  <!-- Preconnect para reducir latencia de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <!-- Fuentes: carga no bloqueante -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" media="print" onload="this.media='all'"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap"/></noscript>
+
+  <!-- Preload imagen hero — LCP crítico -->
+  <link rel="preload" as="image" href="img/hero.webp" fetchpriority="high"/>
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ventura Surf Co. – Escuela de Surf & Kite">
 <meta property="og:description" content="Aprende surf, kite y windsurf en Corralejo. 300 días de viento al año.">
@@ -1276,7 +1287,7 @@
       <div class="testi-card testi-card--accent">
         <div class="testi-stars">★★★★★</div>
         <blockquote class="testi-text">
-          "El SUP & Yoga al amanecer fue una experiencia mágica. Las montañas, el agua en calma, el sol saliendo... Sara crea un ambiente increíble. Volveré seguro."
+          "El SUP & Yoga al amanecer fue una experiencia mágica.La arena, el agua en calma, el sol saliendo... Sara crea un ambiente increíble. Volveré seguro."
         </blockquote>
         <div class="testi-author">
           <div class="testi-avatar">LP</div>
