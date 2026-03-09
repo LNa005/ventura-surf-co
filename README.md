@@ -107,7 +107,7 @@ ventura-surf-co/
 - [x] 📸 **Imágenes propias** — Sustituidas todas las imágenes de Unsplash por assets generados propios (`img/`)
 - [x] ⭐ **Sección de testimonios** — 3 reseñas de alumnos con nombre, curso y valoración
 - [x] 🎒 **Páginas de detalle de cada curso** — 5 páginas individuales con programa, incluye y sidebar de reserva
-- [ ] 🎨 **Mejorar acceso a páginas de curso** — Las flechas `→` actuales no convencen. Opciones: cambiarlas a negro o hacer toda la card clickable.
+- [x] 🎨 **Mejorar acceso a páginas de curso** — Las flechas `→` actuales no convencen. Opciones: cambiarlas a negro o hacer toda la card clickable.
 
 ### 🟢 Pulido técnico
 
