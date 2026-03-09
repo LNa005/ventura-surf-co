@@ -989,9 +989,31 @@
       to   { opacity: 1; }
     }
 
+    /* El hero entra solo al cargar la página, sin esperar al scroll */
     .hero-location { animation: fadeIn 0.6s 0.2s both; }
     .hero h1       { animation: fadeUp 0.8s 0.35s both; }
     .hero-sub      { animation: fadeUp 0.8s 0.55s both; }
+
+    /* Estado inicial de los elementos que se van a animar con scroll:
+       invisibles y desplazados hacia abajo. El JS les añade .visible
+       cuando entran en pantalla y entonces hacen la transición. */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Retraso escalonado para que los elementos de una misma fila
+       entren uno detrás de otro en lugar de todos a la vez */
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
@@ -1152,7 +1174,7 @@
 
   <!-- CURSOS -->
   <section class="cursos" id="cursos">
-    <div class="cursos-header">
+    <div class="cursos-header reveal">
       <div>
         <p class="section-eyebrow">Lo que enseñamos</p>
         <h2 class="section-title">Nuestros<br>cursos</h2>
@@ -1160,7 +1182,7 @@
       <a href="#reserva" class="btn-fill">Ver todos →</a>
     </div>
     <div class="cursos-grid">
-      <div class="curso-card featured">
+      <div class="curso-card featured reveal reveal-delay-1">
         <div>
           <p class="curso-num">01 / Más popular</p>
           <div class="curso-img">
@@ -1180,7 +1202,7 @@
           <a href="kitesurf.html" class="curso-arrow">→</a>
         </div>
       </div>
-      <div class="curso-card">
+      <div class="curso-card reveal reveal-delay-2">
         <div class="curso-img"><img src="img/surf.webp" alt="Surfista en la playa de Corralejo"/></div>
         <p class="curso-num">02</p>
         <h3>Surf intensivo</h3>
@@ -1188,7 +1210,7 @@
         <div class="curso-price" style="font-size:2rem"><sup style="font-size:0.9rem">€</sup>120<span>3 días · equipo incluido</span></div>
         <a href="surf.html" class="curso-arrow">→</a>
       </div>
-      <div class="curso-card">
+      <div class="curso-card reveal reveal-delay-3">
         <div class="curso-img"><img src="img/windsurf.webp" alt="Windsurf en las costas de Fuerteventura"/></div>
         <p class="curso-num">03</p>
         <h3>Windsurf</h3>
@@ -1196,7 +1218,7 @@
         <div class="curso-price" style="font-size:2rem"><sup style="font-size:0.9rem">€</sup>160<span>4 días · equipo incluido</span></div>
         <a href="windsurf.html" class="curso-arrow">→</a>
       </div>
-      <div class="curso-card">
+      <div class="curso-card reveal reveal-delay-2">
         <div class="curso-img"><img src="img/sup.webp" alt="Paddle surf al amanecer en Fuerteventura"/></div>
         <p class="curso-num">04</p>
         <h3>SUP & Yoga</h3>
@@ -1204,7 +1226,7 @@
         <div class="curso-price" style="font-size:2rem"><sup style="font-size:0.9rem">€</sup>55<span>sesión individual</span></div>
         <a href="sup.html" class="curso-arrow">→</a>
       </div>
-      <div class="curso-card">
+      <div class="curso-card reveal reveal-delay-3">
         <div class="curso-img"><img src="img/privada.webp" alt="Instructor de surf con alumno en la playa" style="object-position: center top;"/></div>
         <p class="curso-num">05</p>
         <h3>Clase privada</h3>
@@ -1217,18 +1239,18 @@
 
   <!-- VIENTO -->
   <section class="viento" id="viento">
-    <div class="viento-text">
+    <div class="viento-text reveal">
       <p class="section-eyebrow">El secreto de la isla</p>
       <h2>El <em>viento</em><br>que lo cambia<br>todo</h2>
       <p>Fuerteventura es la isla más ventosa de Europa. El alisio sopla de media 300 días al año, lo que la convierte en el destino número uno del mundo para kitesurf y windsurf.</p>
       <div class="stats-list">
-        <div class="stat-item"><span class="stat-num">300</span><span class="stat-label">Días de viento al año</span></div>
-        <div class="stat-item"><span class="stat-num">25kt</span><span class="stat-label">Media en verano</span></div>
-        <div class="stat-item"><span class="stat-num">22°C</span><span class="stat-label">Temperatura del agua</span></div>
-        <div class="stat-item"><span class="stat-num">#1</span><span class="stat-label">Destino kite en Europa</span></div>
+        <div class="stat-item reveal reveal-delay-1"><span class="stat-num">300</span><span class="stat-label">Días de viento al año</span></div>
+        <div class="stat-item reveal reveal-delay-2"><span class="stat-num">25kt</span><span class="stat-label">Media en verano</span></div>
+        <div class="stat-item reveal reveal-delay-3"><span class="stat-num">22°C</span><span class="stat-label">Temperatura del agua</span></div>
+        <div class="stat-item reveal reveal-delay-4"><span class="stat-num">#1</span><span class="stat-label">Destino kite en Europa</span></div>
       </div>
     </div>
-    <div class="viento-visual">
+    <div class="viento-visual reveal reveal-delay-2">
       <div class="wind-panel">
         <p class="wind-panel-title">Fuerza del viento por mes (nudos)</p>
         <div class="wind-bars">
@@ -1251,26 +1273,26 @@
 
   <!-- INSTRUCTORES -->
   <section class="instructores" id="equipo">
-    <div class="instructores-header">
+    <div class="instructores-header reveal">
       <p class="section-eyebrow">El equipo</p>
       <h2 class="section-title">Aprende con los mejores</h2>
     </div>
     <div class="instructores-grid">
-      <div class="instructor-card">
+      <div class="instructor-card reveal reveal-delay-1">
         <span class="instructor-badge">Kite · IKO L2</span>
         <div class="instructor-avatar av-rust">🤙</div>
         <h4>Carlos Medina</h4>
         <p class="instructor-role">Instructor de Kitesurf</p>
         <p class="instructor-bio">Lleva 15 años en la playa de Corralejo. Ha formado a más de 2.000 alumnos. Paciencia infinita y muy buenas vibras.</p>
       </div>
-      <div class="instructor-card">
+      <div class="instructor-card reveal reveal-delay-2">
         <span class="instructor-badge">Surf · ISA L1</span>
         <div class="instructor-avatar av-blue">🏄</div>
         <h4>Sara Vega</h4>
         <p class="instructor-role">Instructora de Surf & SUP</p>
         <p class="instructor-bio">Campeona regional de surf en 2019. Especialista en enseñar a niños y adultos desde cero con total seguridad.</p>
       </div>
-      <div class="instructor-card">
+      <div class="instructor-card reveal reveal-delay-3">
         <span class="instructor-badge">Wind · PWA</span>
         <div class="instructor-avatar av-sand">💨</div>
         <h4>Tom Bauer</h4>
@@ -1282,13 +1304,13 @@
 
   <!-- TESTIMONIOS -->
   <section class="testimonios">
-    <div class="testimonios-header">
+    <div class="testimonios-header reveal">
       <p class="section-eyebrow">Lo que dicen</p>
       <h2 class="section-title">Alumnos que<br>ya volaron</h2>
     </div>
     <div class="testimonios-grid">
 
-      <div class="testi-card">
+      <div class="testi-card reveal reveal-delay-1">
         <div class="testi-stars">★★★★★</div>
         <blockquote class="testi-text">
           "Vine sin saber nada de kitesurf y en 5 días estaba navegando solo. Carlos tiene una paciencia infinita y explica todo con una claridad brutal. Lo mejor que he hecho en años."
@@ -1302,7 +1324,7 @@
         </div>
       </div>
 
-      <div class="testi-card testi-card--accent">
+      <div class="testi-card testi-card--accent reveal reveal-delay-2">
         <div class="testi-stars">★★★★★</div>
         <blockquote class="testi-text">
           "El SUP & Yoga al amanecer fue una experiencia mágica. Las montañas, el agua en calma, el sol saliendo... Sara crea un ambiente increíble. Volveré seguro."
@@ -1316,7 +1338,7 @@
         </div>
       </div>
 
-      <div class="testi-card">
+      <div class="testi-card reveal reveal-delay-3">
         <div class="testi-stars">★★★★★</div>
         <blockquote class="testi-text">
           "Tom ist einfach der Beste. Ich hatte schon etwas Erfahrung, aber nach 4 Tagen Windsurf mit ihm bin ich auf ein komplett neues Level gekommen. Absolute Empfehlung!"
@@ -1373,14 +1395,31 @@
   </footer>
 
   <script>
-    // ── CURSOR ──
+
+    // ─────────────────────────────────────────
+    // CURSOR PERSONALIZADO
+    // En lugar de mover el cursor directamente al ratón,
+    // uso interpolación lineal (lerp) para que vaya
+    // "persiguiendo" la posición real con un pequeño retraso.
+    // Eso da ese efecto suave y orgánico que se nota enseguida.
+    // ─────────────────────────────────────────
     const cursor = document.getElementById('cursor');
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
+    let mouseX = 0, mouseY = 0;  // posición real del ratón
+    let cursorX = 0, cursorY = 0; // posición actual del cursor animado
 
-    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+    // Actualizamos la posición real en cada movimiento
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
 
+    /**
+     * Mueve el cursor personalizado hacia la posición del ratón
+     * usando interpolación lineal (lerp) con factor 0.15.
+     * Se llama a sí misma en cada frame con requestAnimationFrame.
+     */
     function animateCursor() {
+      // Avanzamos un 15% de la distancia que nos queda — eso crea el retraso suave
       cursorX += (mouseX - cursorX) * 0.15;
       cursorY += (mouseY - cursorY) * 0.15;
       cursor.style.left = cursorX + 'px';
@@ -1389,24 +1428,31 @@
     }
     animateCursor();
 
+    // El cursor crece al pasar por encima de elementos interactivos
     document.querySelectorAll('a, button, .curso-card').forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('big'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
     });
 
-    // ── MENÚ HAMBURGUESA ──
-    const toggle   = document.getElementById('navToggle');
+
+    // ─────────────────────────────────────────
+    // MENÚ HAMBURGUESA (móvil)
+    // Abre y cierra el overlay de navegación móvil.
+    // También bloquea el scroll del body mientras está abierto
+    // para que no se pueda desplazar la página por detrás.
+    // ─────────────────────────────────────────
+    const toggle    = document.getElementById('navToggle');
     const navMobile = document.getElementById('navMobile');
 
     toggle.addEventListener('click', () => {
       const isOpen = navMobile.classList.toggle('open');
       toggle.classList.toggle('open', isOpen);
+      // aria-expanded le dice a los lectores de pantalla si el menú está abierto
       toggle.setAttribute('aria-expanded', isOpen);
-      // Bloquea scroll del body cuando el menú está abierto
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    // Cerrar el menú al hacer clic en cualquier link
+    // Cerramos el menú automáticamente al pulsar cualquier enlace dentro
     navMobile.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navMobile.classList.remove('open');
@@ -1416,22 +1462,56 @@
       });
     });
 
-    // ── BARRAS DE VIENTO (Intersection Observer) ──
-    const observer = new IntersectionObserver(entries => {
+
+    // ─────────────────────────────────────────
+    // ANIMACIONES DE ENTRADA CON SCROLL
+    // Observo todos los elementos con clase .reveal.
+    // Cuando uno entra en el viewport (al menos un 15%),
+    // le añado la clase .visible que dispara la transición CSS.
+    // Una vez animado, dejo de observarlo para no repetir la animación
+    // y liberar memoria del observer.
+    // ─────────────────────────────────────────
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Ya no necesitamos seguir mirando este elemento
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15 // el elemento tiene que ser al menos 15% visible para activarse
+    });
+
+    // Registramos todos los elementos que queremos animar
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+    // ─────────────────────────────────────────
+    // BARRAS DE VIENTO
+    // Las barras empiezan en width: 0% y cuando el panel entra
+    // en pantalla las animamos hasta su valor real.
+    // Usamos un observer separado del de .reveal porque necesita
+    // lógica especial: resetear el width antes de animar.
+    // ─────────────────────────────────────────
+    const windObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.querySelectorAll('.wind-bar-fill').forEach(bar => {
-            const w = bar.style.width;
+            // Guardamos el ancho final, lo ponemos a 0 y luego lo restauramos
+            // El pequeño timeout da tiempo al navegador a pintar el 0% antes de animar
+            const targetWidth = bar.style.width;
             bar.style.width = '0%';
-            setTimeout(() => { bar.style.width = w; }, 100);
+            setTimeout(() => { bar.style.width = targetWidth; }, 100);
           });
-          observer.unobserve(entry.target);
+          windObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.3 }); // esperamos a que el 30% del panel sea visible
 
     const windPanel = document.querySelector('.wind-panel');
-    if (windPanel) observer.observe(windPanel);
+    if (windPanel) windObserver.observe(windPanel);
+
   </script>
 </body>
 </html>
