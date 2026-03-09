@@ -121,8 +121,8 @@ ventura-surf-co/
 - [x] 🔦 **Lighthouse score** — Desktop 96/92/100/91 · Mobile 79/93/100/91
 - [~] 🖼️ **Comprimir imágenes de cards** — Descartado. El target principal es escritorio (96 Lighthouse). El diseño responsive existe pero no es el foco del proyecto.
 - [x] 🖼️ **Meta og:image real** — URL actualizada a GitHub Pages
-- [ ] 🔗 **LinkedIn real** — Actualizar `href="#"` con la URL del perfil cuando esté creado
-- [ ] 📱 **Revisar en iOS Safari** — Algunos efectos CSS se comportan diferente en iPhone
+- [ ] 🔗 **LinkedIn real** — Pendiente de crear el perfil. El `href="#"` está listo para actualizar.
+- [x] 📱 **Revisado en iOS Safari** — Funciona correctamente ✅
 
 ### 📄 Calidad de código
 
