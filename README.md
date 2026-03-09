@@ -117,7 +117,7 @@ ventura-surf-co/
 - [x] 🔒 **Honeypot anti-spam** — Campo oculto `_gotcha` en el formulario para bloquear bots
 - [x] 🧪 **Formulario de Formspree testeado** — Reserva de prueba enviada y recibida correctamente
 - [x] 🎭 **Animaciones de entrada con scroll** — Cards, instructores, testimonios y stats entran con fade escalonado
-- [ ] 💀 **Skeleton loading** — Placeholders animados mientras cargan las imágenes
+- [x] 💀 **Skeleton loading** — Shimmer animado en las cards mientras cargan las imágenes
 - [x] 🔦 **Lighthouse score** — Desktop 96/92/100/91 · Mobile 79/93/100/91
 - [ ] 🖼️ **Comprimir imágenes de cards** — Las webp de los cursos pesan demasiado para móvil, bajarlas a <150kb con squoosh para subir el rendimiento móvil de 79 a 90+
 - [x] 🖼️ **Meta og:image real** — URL actualizada a GitHub Pages

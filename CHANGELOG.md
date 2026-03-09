@@ -12,7 +12,18 @@ El formato sigue el estándar [Keep a Changelog](https://keepachangelog.com/es/1
 - Comprimir imágenes de cards a <150kb para mejorar rendimiento móvil
 - Revisar en iOS Safari
 - Añadir LinkedIn real cuando esté creado el perfil
-- CHANGELOG.md — este archivo 😄
+
+---
+
+## [1.6.0] - 2026-03-08
+
+### Added
+- Skeleton loading en las 5 cards de cursos — mientras la imagen no ha cargado se muestra un placeholder oscuro con efecto shimmer (destello que recorre el área de izquierda a derecha)
+- Si la imagen ya estaba en caché al cargar la página, el skeleton desaparece de inmediato sin parpadear
+- Fallback: si una imagen falla al cargar, el skeleton también desaparece para no bloquear la UI
+
+### Changed
+- `.curso-img` tiene ahora `position: relative` para que el skeleton pueda posicionarse sobre ella correctamente
 
 ---
 

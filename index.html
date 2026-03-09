@@ -487,7 +487,8 @@
     .curso-img {
       height: 180px;
       overflow: hidden;
-      margin: 0 -2.5rem 1.5rem; /* quitamos el margen negativo superior */
+      margin: 0 -2.5rem 1.5rem;
+      position: relative; /* necesario para posicionar el skeleton dentro */
     }
 
     .curso-card.featured .curso-img { height: 240px; }
@@ -505,6 +506,45 @@
     .curso-card:hover .curso-img img {
       transform: scale(1.07);
       filter: brightness(0.95);
+    }
+
+    /* ── SKELETON LOADING ──
+       Mientras la imagen no ha cargado, mostramos un placeholder
+       animado con un shimmer (destello que se desplaza de izquierda
+       a derecha). En cuanto la imagen carga, el skeleton desaparece. */
+
+    .skeleton {
+      position: absolute;
+      inset: 0;
+      background: #1a1a16;
+      overflow: hidden;
+      /* Cuando la imagen carga, el JS le añade .loaded y se desvanece */
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+
+    .skeleton.loaded {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* El destello: un gradiente que viaja de izquierda a derecha */
+    .skeleton::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(247, 244, 238, 0.06) 50%,
+        transparent 100%
+      );
+      animation: shimmer 1.6s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      from { transform: translateX(-100%); }
+      to   { transform: translateX(100%); }
     }
 
     .curso-num {
@@ -1186,7 +1226,7 @@
         <div>
           <p class="curso-num">01 / Más popular</p>
           <div class="curso-img">
-            <img src="img/kitesurf.webp" alt="Kitesurf en las playas de Corralejo, Fuerteventura"/>
+            <div class="skeleton"></div><img src="img/kitesurf.webp" alt="Kitesurf en las playas de Corralejo, Fuerteventura"/>
           </div>
           <h3>Kitesurf desde cero</h3>
           <p>El programa más completo para aprender kitesurf de forma segura. En 5 días estarás navegando de forma independiente con el viento de Corralejo.</p>
@@ -1203,7 +1243,7 @@
         </div>
       </div>
       <div class="curso-card reveal reveal-delay-2">
-        <div class="curso-img"><img src="img/surf.webp" alt="Surfista en la playa de Corralejo"/></div>
+        <div class="curso-img"><div class="skeleton"></div><img src="img/surf.webp" alt="Surfista en la playa de Corralejo"/></div>
         <p class="curso-num">02</p>
         <h3>Surf intensivo</h3>
         <p>3 días, 2h por sesión. Playa de Corralejo, olas perfectas para aprender.</p>
@@ -1211,7 +1251,7 @@
         <a href="surf.html" class="curso-arrow">→</a>
       </div>
       <div class="curso-card reveal reveal-delay-3">
-        <div class="curso-img"><img src="img/windsurf.webp" alt="Windsurf en las costas de Fuerteventura"/></div>
+        <div class="curso-img"><div class="skeleton"></div><img src="img/windsurf.webp" alt="Windsurf en las costas de Fuerteventura"/></div>
         <p class="curso-num">03</p>
         <h3>Windsurf</h3>
         <p>La disciplina que nació en Fuerteventura. Aprende con los mejores vientos de Europa.</p>
@@ -1219,7 +1259,7 @@
         <a href="windsurf.html" class="curso-arrow">→</a>
       </div>
       <div class="curso-card reveal reveal-delay-2">
-        <div class="curso-img"><img src="img/sup.webp" alt="Paddle surf al amanecer en Fuerteventura"/></div>
+        <div class="curso-img"><div class="skeleton"></div><img src="img/sup.webp" alt="Paddle surf al amanecer en Fuerteventura"/></div>
         <p class="curso-num">04</p>
         <h3>SUP & Yoga</h3>
         <p>Paddle surf al amanecer + yoga en la playa. Para los que buscan calma y fuerza.</p>
@@ -1227,7 +1267,7 @@
         <a href="sup.html" class="curso-arrow">→</a>
       </div>
       <div class="curso-card reveal reveal-delay-3">
-        <div class="curso-img"><img src="img/privada.webp" alt="Instructor de surf con alumno en la playa" style="object-position: center top;"/></div>
+        <div class="curso-img"><div class="skeleton"></div><img src="img/privada.webp" alt="Instructor de surf con alumno en la playa" style="object-position: center top;"/></div>
         <p class="curso-num">05</p>
         <h3>Clase privada</h3>
         <p>Tu ritmo, tu nivel, tu instructor. Para avanzar rápido o refinar la técnica.</p>
@@ -1511,6 +1551,31 @@
 
     const windPanel = document.querySelector('.wind-panel');
     if (windPanel) windObserver.observe(windPanel);
+
+
+    // ─────────────────────────────────────────
+    // SKELETON LOADING
+    // Para cada imagen de las cards, escuchamos el evento 'load'.
+    // Cuando la imagen termina de cargar, le añadimos .loaded al
+    // skeleton que hay justo antes de ella — eso lo desvanece con
+    // la transición CSS que ya tiene definida.
+    // Si la imagen ya estaba en caché (complete === true),
+    // la marcamos directamente sin esperar el evento.
+    // ─────────────────────────────────────────
+    document.querySelectorAll('.curso-img img').forEach(img => {
+      const skeleton = img.previousElementSibling;
+      if (!skeleton || !skeleton.classList.contains('skeleton')) return;
+
+      if (img.complete) {
+        // La imagen ya estaba en caché — ocultamos el skeleton de inmediato
+        skeleton.classList.add('loaded');
+      } else {
+        // Esperamos a que cargue
+        img.addEventListener('load', () => skeleton.classList.add('loaded'));
+        // Si falla la carga (imagen rota), también quitamos el skeleton
+        img.addEventListener('error', () => skeleton.classList.add('loaded'));
+      }
+    });
 
   </script>
 </body>
