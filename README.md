@@ -107,7 +107,7 @@ ventura-surf-co/
 - [x] 📸 **Imágenes propias** — Sustituidas todas las imágenes de Unsplash por assets generados propios (`img/`)
 - [x] ⭐ **Sección de testimonios** — 3 reseñas de alumnos con nombre, curso y valoración
 - [x] 🎒 **Páginas de detalle de cada curso** — 5 páginas individuales con programa, incluye y sidebar de reserva
-- [x] 🎨 **Mejorar acceso a páginas de curso** — Las flechas `→` actuales no convencen. Opciones: cambiarlas a negro o hacer toda la card clickable.
+- [ ] 🎨 **Mejorar acceso a páginas de curso** — Las flechas `→` actuales no convencen. Opciones: cambiarlas a negro o hacer toda la card clickable.
 
 ### 🟢 Pulido técnico
 
@@ -119,7 +119,7 @@ ventura-surf-co/
 - [x] 🎭 **Animaciones de entrada con scroll** — Cards, instructores, testimonios y stats entran con fade escalonado
 - [x] 💀 **Skeleton loading** — Shimmer animado en las cards mientras cargan las imágenes
 - [x] 🔦 **Lighthouse score** — Desktop 96/92/100/91 · Mobile 79/93/100/91
-- [ ] 🖼️ **Comprimir imágenes de cards** — Las webp de los cursos pesan demasiado para móvil, bajarlas a <150kb con squoosh para subir el rendimiento móvil de 79 a 90+
+- [~] 🖼️ **Comprimir imágenes de cards** — Descartado. El target principal es escritorio (96 Lighthouse). El diseño responsive existe pero no es el foco del proyecto.
 - [x] 🖼️ **Meta og:image real** — URL actualizada a GitHub Pages
 - [ ] 🔗 **LinkedIn real** — Actualizar `href="#"` con la URL del perfil cuando esté creado
 - [ ] 📱 **Revisar en iOS Safari** — Algunos efectos CSS se comportan diferente en iPhone
