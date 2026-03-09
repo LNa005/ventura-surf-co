@@ -79,8 +79,9 @@ ventura-surf-co/
 ├── favicon.svg         # Favicon con identidad de marca
 ├── .gitignore
 ├── img/
-│   ├── hero.webp       # Fondo del hero (vista aérea kitesurf)
-│   ├── kitesurf.webp   # Card kitesurf destacada
+│   ├── hero.webp           # Fondo del hero · escritorio
+│   ├── hero-mobile.webp    # Fondo del hero · móvil (<768px)
+│   ├── kitesurf.webp       # Card kitesurf destacada
 │   ├── surf.webp       # Card surf intensivo
 │   ├── windsurf.webp   # Card windsurf
 │   ├── sup.webp        # Card SUP & yoga
@@ -106,7 +107,7 @@ ventura-surf-co/
 - [x] 📸 **Imágenes propias** — Sustituidas todas las imágenes de Unsplash por assets generados propios (`img/`)
 - [x] ⭐ **Sección de testimonios** — 3 reseñas de alumnos con nombre, curso y valoración
 - [x] 🎒 **Páginas de detalle de cada curso** — 5 páginas individuales con programa, incluye y sidebar de reserva
-- [ ] No me gustan las líneas azules que se quedan para acceder a las páginas de cada curso, cambiar por un color negro, o quitar y hacer que pulsando cualquier parte del cuadrado de información puedas acceder. (Ya veré como, pero así no me gusta nada)
+- [ ] 🎨 **Mejorar acceso a páginas de curso** — Las flechas `→` actuales no convencen. Opciones: cambiarlas a negro o hacer toda la card clickable.
 
 ### 🟢 Pulido técnico
 
@@ -130,13 +131,12 @@ ventura-surf-co/
 
 ### 💅 Nice to have (futuro)
 
-- [ ] 🌍 **Versión en inglés / alemán** — El target turístico habla otros idiomas (Tom el instructor lo hace 😄)
 - [ ] 🗓️ **Calendario de disponibilidad** — Integrar Calendly o similar para que los usuarios vean fechas disponibles
 - [ ] 🌤️ **Widget de viento en tiempo real** — API de Windguru o Windy para mostrar las condiciones actuales de la playa
 - [ ] 🖼️ **Galería de fotos** — Un lightbox con imágenes reales de las clases
 - [ ] 💳 **Pago online** — Integrar Stripe para que las reservas se puedan confirmar con pago directo
 - [ ] 📧 **Email de confirmación automático** — Con Formspree Pro o una función serverless (Netlify Functions)
-- [ ] 🌍 **Versión en inglés / alemán** — El target turístico habla otros idiomas (Tom el instructor lo hace 😄) - Requiere i18n completo (duplicar páginas o sistema de traducción). pendiente de scope.
+- [ ] 🌍 **Versión en inglés / alemán** — Target turístico internacional. Requiere i18n completo (duplicar páginas o sistema de traducción). Pendiente de scope.
 
 ---
 
