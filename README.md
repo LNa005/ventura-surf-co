@@ -116,7 +116,7 @@ ventura-surf-co/
 - [x] 🖼️ **Imágenes optimizadas a `.webp`** — Todas las imágenes convertidas para mejor rendimiento
 - [x] 🔒 **Honeypot anti-spam** — Campo oculto `_gotcha` en el formulario para bloquear bots
 - [x] 🧪 **Formulario de Formspree testeado** — Reserva de prueba enviada y recibida correctamente
-- [ ] 🎭 **Animaciones de entrada con scroll** — Extender el Intersection Observer para que todas las secciones aparezcan con fade al entrar en viewport
+- [x] 🎭 **Animaciones de entrada con scroll** — Cards, instructores, testimonios y stats entran con fade escalonado
 - [ ] 💀 **Skeleton loading** — Placeholders animados mientras cargan las imágenes
 - [x] 🔦 **Lighthouse score** — Desktop 96/92/100/91 · Mobile 79/93/100/91
 - [ ] 🖼️ **Comprimir imágenes de cards** — Las webp de los cursos pesan demasiado para móvil, bajarlas a <150kb con squoosh para subir el rendimiento móvil de 79 a 90+
@@ -126,8 +126,8 @@ ventura-surf-co/
 
 ### 📄 Calidad de código
 
-- [ ] 💬 **JSDoc en funciones JS** — Añadir documentación a `animateCursor()` y el Intersection Observer
-- [ ] 📝 **CHANGELOG.md** — Registrar los cambios por versión siguiendo el estándar [Keep a Changelog](https://keepachangelog.com/es/)
+- [x] 💬 **JSDoc en funciones JS** — `animateCursor()` y ambos observers documentados
+- [x] 📝 **CHANGELOG.md** — Historial completo desde v1.0.0 siguiendo el estándar [Keep a Changelog](https://keepachangelog.com/es/)
 
 ### 💅 Nice to have (futuro)
 
