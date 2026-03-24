@@ -732,6 +732,110 @@
       flex-shrink: 0;
     }
 
+    /* ── WIDGET VIENTO EN TIEMPO REAL ── */
+    .wind-live {
+      background: #111108;
+      border: 1px solid rgba(247,244,238,0.08);
+      border-radius: 4px;
+      padding: 2rem 2.5rem;
+      margin-bottom: 1.5px; /* mismo gap que el grid de cards */
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Indicador de pulso en vivo */
+    .wind-live-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .wind-live-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* El punto verde que parpadea indicando "en vivo" */
+    .wind-live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4caf50;
+      animation: livePulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    .wind-live-dot.loading { background: var(--muted); animation: none; }
+    .wind-live-dot.error   { background: var(--rust);  animation: none; }
+
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .wind-live-time {
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* Los tres valores principales: velocidad, dirección, condición */
+    .wind-live-data {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .wind-live-item {}
+
+    .wind-live-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--white);
+      line-height: 1;
+      display: block;
+      transition: color 0.5s;
+    }
+
+    /* El color de la velocidad cambia según la intensidad */
+    .wind-live-value.calm    { color: var(--sky); }
+    .wind-live-value.good    { color: #4caf50; }
+    .wind-live-value.strong  { color: var(--rust); }
+
+    .wind-live-sublabel {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    /* Skeleton del widget mientras carga */
+    .wind-live-skeleton {
+      height: 80px;
+      background: rgba(247,244,238,0.03);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .wind-live-skeleton::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(247,244,238,0.05), transparent);
+      animation: shimmer 1.6s ease-in-out infinite;
+    }
+
     /* ── INSTRUCTORES ── */
     .instructores {
       padding: 7rem 5%;
@@ -1318,7 +1422,7 @@
           </div>
         </div>
       </div>
- 
+
       <div class="wind-panel">
         <p class="wind-panel-title">Fuerza del viento por mes (nudos)</p>
         <div class="wind-bars">
@@ -1464,13 +1568,13 @@
 
   <script>
 
-    // ─────────────────────────────────────────
+    // -----------------------------------------
     // CURSOR PERSONALIZADO
     // En lugar de mover el cursor directamente al ratón,
     // uso interpolación lineal (lerp) para que vaya
     // "persiguiendo" la posición real con un pequeño retraso.
     // Eso da ese efecto suave y orgánico que se nota enseguida.
-    // ─────────────────────────────────────────
+    // -----------------------------------------
     const cursor = document.getElementById('cursor');
     let mouseX = 0, mouseY = 0;  // posición real del ratón
     let cursorX = 0, cursorY = 0; // posición actual del cursor animado
@@ -1503,12 +1607,12 @@
     });
 
 
-    // ─────────────────────────────────────────
+    // -----------------------------------------
     // MENÚ HAMBURGUESA (móvil)
     // Abre y cierra el overlay de navegación móvil.
     // También bloquea el scroll del body mientras está abierto
     // para que no se pueda desplazar la página por detrás.
-    // ─────────────────────────────────────────
+    // -----------------------------------------
     const toggle    = document.getElementById('navToggle');
     const navMobile = document.getElementById('navMobile');
 
@@ -1531,14 +1635,14 @@
     });
 
 
-    // ─────────────────────────────────────────
+    // -----------------------------------------
     // ANIMACIONES DE ENTRADA CON SCROLL
     // Observo todos los elementos con clase .reveal.
     // Cuando uno entra en el viewport (al menos un 15%),
     // le añado la clase .visible que dispara la transición CSS.
     // Una vez animado, dejo de observarlo para no repetir la animación
     // y liberar memoria del observer.
-    // ─────────────────────────────────────────
+    // -----------------------------------------
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1555,13 +1659,13 @@
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 
-    // ─────────────────────────────────────────
+    // -----------------------------------------
     // BARRAS DE VIENTO
     // Las barras empiezan en width: 0% y cuando el panel entra
     // en pantalla las animamos hasta su valor real.
     // Usamos un observer separado del de .reveal porque necesita
     // lógica especial: resetear el width antes de animar.
-    // ─────────────────────────────────────────
+    // -----------------------------------------
     const windObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1581,7 +1685,92 @@
     if (windPanel) windObserver.observe(windPanel);
 
 
-    // ─────────────────────────────────────────
+    // -----------------------------------------
+    // WIDGET DE VIENTO EN TIEMPO REAL
+    // Usamos Open-Meteo (openmeteo.com) — API gratuita, sin registro,
+    // sin API key. Pedimos los datos actuales de Corralejo:
+    // latitud 28.73, longitud -13.86.
+    // Convertimos m/s a nudos (1 m/s = 1.944 kt) porque es la unidad
+    // estándar en náutica y deportes de viento.
+    // -----------------------------------------
+
+    // Convierte grados (0-360) al punto cardinal correspondiente
+    function degreesToCompass(deg) {
+      const dirs = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSO','SO','OSO','O','ONO','NO','NNO'];
+      return dirs[Math.round(deg / 22.5) % 16];
+    }
+
+    // Devuelve un texto descriptivo y una clase CSS según la velocidad en nudos
+    function windCondition(kt) {
+      if (kt < 8)  return { text: 'Calma',    cls: 'calm' };
+      if (kt < 16) return { text: 'Suave',    cls: 'calm' };
+      if (kt < 22) return { text: 'Bueno',    cls: 'good' };
+      if (kt < 28) return { text: 'Fuerte',   cls: 'strong' };
+      return             { text: 'Muy fuerte', cls: 'strong' };
+    }
+
+    async function fetchWind() {
+      const dot      = document.getElementById('windDot');
+      const timeEl   = document.getElementById('windTime');
+      const skeleton = document.getElementById('windSkeleton');
+      const dataEl   = document.getElementById('windData');
+      const speedEl  = document.getElementById('windSpeed');
+      const dirEl    = document.getElementById('windDir');
+      const condEl   = document.getElementById('windCond');
+
+      try {
+        // Corralejo, Fuerteventura — datos horarios actuales
+        const url = 'https://api.open-meteo.com/v1/forecast' +
+          '?latitude=28.73&longitude=-13.86' +
+          '&current=wind_speed_10m,wind_direction_10m' +
+          '&wind_speed_unit=ms' +
+          '&timezone=Atlantic%2FCanary';
+
+        const res  = await fetch(url);
+        const json = await res.json();
+        const cur  = json.current;
+
+        // Convertimos m/s → nudos y redondeamos
+        const kt  = Math.round(cur.wind_speed_10m * 1.944);
+        const dir = degreesToCompass(cur.wind_direction_10m);
+        const { text, cls } = windCondition(kt);
+
+        // Rellenamos los valores en el DOM
+        speedEl.textContent = kt;
+        speedEl.className   = `wind-live-value ${cls}`;
+        dirEl.textContent   = dir;
+        condEl.textContent  = text;
+
+        // Mostramos la hora local de la última actualización
+        const now = new Date();
+        timeEl.textContent = `Actualizado ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+
+        // Quitamos el skeleton y mostramos los datos
+        skeleton.style.display = 'none';
+        dataEl.style.display   = 'grid';
+
+        // El punto verde parpadea indicando conexión activa
+        dot.classList.remove('loading', 'error');
+
+      } catch (err) {
+        // Si falla la petición, mostramos un estado de error discreto
+        timeEl.textContent   = 'Sin conexión';
+        skeleton.style.display = 'none';
+        dataEl.style.display   = 'grid';
+        speedEl.textContent  = '—';
+        dirEl.textContent    = '—';
+        condEl.textContent   = 'N/D';
+        dot.classList.add('error');
+        console.warn('Wind API error:', err);
+      }
+    }
+
+    // Cargamos al arrancar y actualizamos cada 10 minutos
+    fetchWind();
+    setInterval(fetchWind, 10 * 60 * 1000);
+
+
+    // -----------------------------------------
     // SKELETON LOADING
     // Para cada imagen de las cards, escuchamos el evento 'load'.
     // Cuando la imagen termina de cargar, le añadimos .loaded al
@@ -1589,7 +1778,7 @@
     // la transición CSS que ya tiene definida.
     // Si la imagen ya estaba en caché (complete === true),
     // la marcamos directamente sin esperar el evento.
-    // ─────────────────────────────────────────
+    // -----------------------------------------
     document.querySelectorAll('.curso-img img').forEach(img => {
       const skeleton = img.previousElementSibling;
       if (!skeleton || !skeleton.classList.contains('skeleton')) return;
