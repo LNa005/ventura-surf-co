@@ -9,9 +9,26 @@ El formato sigue el estándar [Keep a Changelog](https://keepachangelog.com/es/1
 ## [Unreleased]
 
 ### Por hacer
-- Comprimir imágenes de cards a <150kb para mejorar rendimiento móvil
-- Revisar en iOS Safari
 - Añadir LinkedIn real cuando esté creado el perfil
+
+---
+
+## [1.7.0] - 2026-03-08
+
+### Added
+- Widget de viento en tiempo real usando **Open-Meteo API** (gratuita, sin registro, sin API key)
+- Datos de Corralejo (lat 28.73, lon -13.86): velocidad en nudos, dirección en punto cardinal y condición textual
+- Indicador de pulso verde animado cuando hay conexión, rojo si falla
+- Actualización automática cada 10 minutos con `setInterval`
+- Skeleton loading mientras llegan los datos de la API
+- Estado de error discreto si la petición falla (sin romper la UI)
+- Color de la velocidad cambia según intensidad: sky (calma), verde (bueno), rust (fuerte)
+- Hora de última actualización mostrada en el widget
+
+### Technical
+- Conversión m/s → nudos (factor 1.944)
+- Conversión de grados a punto cardinal con array de 16 direcciones
+- `async/await` con `try/catch` para manejo de errores
 
 ---
 

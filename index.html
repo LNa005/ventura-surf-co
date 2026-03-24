@@ -1291,6 +1291,34 @@
       </div>
     </div>
     <div class="viento-visual reveal reveal-delay-2">
+      <!-- Widget de viento en tiempo real — datos de Open-Meteo API -->
+      <div class="wind-live" id="windLive">
+        <div class="wind-live-header">
+          <span class="wind-live-label">
+            <span class="wind-live-dot loading" id="windDot"></span>
+            Corralejo · Ahora mismo
+          </span>
+          <span class="wind-live-time" id="windTime">Cargando...</span>
+        </div>
+        <!-- Skeleton mientras llegan los datos -->
+        <div class="wind-live-skeleton" id="windSkeleton"></div>
+        <!-- Datos reales, ocultos hasta que lleguen -->
+        <div class="wind-live-data" id="windData" style="display:none">
+          <div class="wind-live-item">
+            <span class="wind-live-value" id="windSpeed">—</span>
+            <span class="wind-live-sublabel">Velocidad (kt)</span>
+          </div>
+          <div class="wind-live-item">
+            <span class="wind-live-value" id="windDir">—</span>
+            <span class="wind-live-sublabel">Dirección</span>
+          </div>
+          <div class="wind-live-item">
+            <span class="wind-live-value" id="windCond" style="font-size:1.6rem">—</span>
+            <span class="wind-live-sublabel">Condición</span>
+          </div>
+        </div>
+      </div>
+ 
       <div class="wind-panel">
         <p class="wind-panel-title">Fuerza del viento por mes (nudos)</p>
         <div class="wind-bars">

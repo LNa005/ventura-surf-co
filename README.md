@@ -132,7 +132,7 @@ ventura-surf-co/
 ### 💅 Nice to have (futuro)
 
 - [ ] 🗓️ **Calendario de disponibilidad** — Integrar Calendly o similar para que los usuarios vean fechas disponibles
-- [ ] 🌤️ **Widget de viento en tiempo real** — API de Windguru o Windy para mostrar las condiciones actuales de la playa
+- [x] 🌤️ **Widget de viento en tiempo real** — Open-Meteo API (gratuita, sin key). Muestra velocidad en nudos, dirección y condición actualizados cada 10 min
 - [ ] 🖼️ **Galería de fotos** — Un lightbox con imágenes reales de las clases
 - [ ] 💳 **Pago online** — Integrar Stripe para que las reservas se puedan confirmar con pago directo
 - [ ] 📧 **Email de confirmación automático** — Con Formspree Pro o una función serverless (Netlify Functions)
