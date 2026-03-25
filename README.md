@@ -94,7 +94,7 @@ ventura-surf-co/
 
 ## 📋 Pendientes / TODO List 🩵
 
-> Todo lo que queda por pulir para que esto esté *chef's kiss* ✨
+> Proyecto terminado ✅ — Todos los puntos resueltos, descartados o pospuestos con criterio.
 
 ### 🔴 Urgente (antes de compartir como portfolio)
 
@@ -107,7 +107,8 @@ ventura-surf-co/
 - [x] 📸 **Imágenes propias** — Sustituidas todas las imágenes de Unsplash por assets generados propios (`img/`)
 - [x] ⭐ **Sección de testimonios** — 3 reseñas de alumnos con nombre, curso y valoración
 - [x] 🎒 **Páginas de detalle de cada curso** — 5 páginas individuales con programa, incluye y sidebar de reserva
-- [ ] 🎨 **Mejorar acceso a páginas de curso** — Las flechas `→` actuales no convencen. Opciones: cambiarlas a negro o hacer toda la card clickable.
+- [x] 📸 **Fotos reales de instructores** — Avatares circulares con imágenes propias (instructor1-3.webp)
+- [x] 🎨 **Mejorar acceso a páginas de curso** — Flechas cambiadas a círculo blanco sólido con flecha negra
 
 ### 🟢 Pulido técnico
 
@@ -131,11 +132,11 @@ ventura-surf-co/
 
 ### 💅 Nice to have (futuro)
 
-- [ ] 🗓️ **Calendario de disponibilidad** — Integrar Calendly o similar para que los usuarios vean fechas disponibles
+- [~] 🗓️ **Calendario de disponibilidad** — Descartado. No se incorporó Calendly.
 - [x] 🌤️ **Widget de viento en tiempo real** — Open-Meteo API (gratuita, sin key). Muestra velocidad en nudos, dirección y condición actualizados cada 10 min
-- [ ] 🖼️ **Galería de fotos** — Un lightbox con imágenes reales de las clases
-- [ ] 💳 **Pago online** — Integrar Stripe para que las reservas se puedan confirmar con pago directo
-- [ ] 📧 **Email de confirmación automático** — Con Formspree Pro o una función serverless (Netlify Functions)
+- [~] 🖼️ **Galería de fotos** — Descartada por ahora. El portfolio ya tiene suficiente contenido visual.
+- [~] 💳 **Pago online** — Descartado. Proyecto ficticio, Formspree cubre la captura de leads.
+- [~] 📧 **Email de confirmación automático** — Descartado. Requiere Formspree Pro o serverless, fuera de scope.
 - [ ] 🌍 **Versión en inglés / alemán** — Target turístico internacional. Requiere i18n completo (duplicar páginas o sistema de traducción). Pendiente de scope.
 
 ---
