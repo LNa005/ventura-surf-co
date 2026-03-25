@@ -866,6 +866,16 @@
       justify-content: center;
       font-size: 2.2rem;
       margin-bottom: 1.5rem;
+      overflow: hidden; /* recorta la foto en círculo */
+    }
+
+    /* La foto de perfil ocupa todo el círculo */
+    .instructor-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top; /* priorizamos la cara */
+      display: block;
     }
 
     .av-blue { background: var(--blue); }
@@ -1452,21 +1462,21 @@
     <div class="instructores-grid">
       <div class="instructor-card reveal reveal-delay-1">
         <span class="instructor-badge">Kite · IKO L2</span>
-        <div class="instructor-avatar av-rust">🤙</div>
+        <div class="instructor-avatar av-rust"><img src="img/instructor1.webp" alt="Carlos Medina, instructor de kitesurf"/></div>
         <h4>Carlos Medina</h4>
         <p class="instructor-role">Instructor de Kitesurf</p>
         <p class="instructor-bio">Lleva 15 años en la playa de Corralejo. Ha formado a más de 2.000 alumnos. Paciencia infinita y muy buenas vibras.</p>
       </div>
       <div class="instructor-card reveal reveal-delay-2">
         <span class="instructor-badge">Surf · ISA L1</span>
-        <div class="instructor-avatar av-blue">🏄</div>
+        <div class="instructor-avatar av-blue"><img src="img/instructor2.webp" alt="Sara Vega, instructora de surf y SUP"/></div>
         <h4>Sara Vega</h4>
         <p class="instructor-role">Instructora de Surf & SUP</p>
         <p class="instructor-bio">Campeona regional de surf en 2019. Especialista en enseñar a niños y adultos desde cero con total seguridad.</p>
       </div>
       <div class="instructor-card reveal reveal-delay-3">
         <span class="instructor-badge">Wind · PWA</span>
-        <div class="instructor-avatar av-sand">💨</div>
+        <div class="instructor-avatar av-sand"><img src="img/instructor3.webp" alt="Tom Bauer, instructor de windsurf"/></div>
         <h4>Tom Bauer</h4>
         <p class="instructor-role">Instructor de Windsurf</p>
         <p class="instructor-bio">Alemán de nacimiento, majorero de corazón. Compitió en el circuito PWA durante 8 años. Clases en español, inglés y alemán.</p>
